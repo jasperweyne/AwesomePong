@@ -13,7 +13,7 @@ namespace Pong
          * 
          * @value: 0 <= moved <= 1
          */
-        float moved;
+        private float moved;
         
         /*
          * Whether the player moves along the x-axis or y-axis
@@ -22,21 +22,27 @@ namespace Pong
          * true:  x-axis
          * false: y-axis
          */
-        bool x_y;
+        private bool x_y;
 
         /*
          * The percentage on screen of the width of the player
          * 
          * @value 0 <= width <= 1
          */ 
-        float width;
+        private const float width = 0.2f;
 
         /*
          * The amount of pixels on screen of the depth of the player
          * 
          * @value 0 < depth 
          */
-        float depth;
+        private const int depth = 50;
 
+        /*
+         * The speed of the player
+         * 
+         * @value dunno yet?
+         */
+        private const int speed = 200;
     }
 }
