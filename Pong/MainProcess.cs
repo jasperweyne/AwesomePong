@@ -4,17 +4,26 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
+    /// <summary>
+    ///  The class that controls the game- and draw-loops
+    /// </summary>
     public class MainProcess: Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        /// <summary>
+        ///  The method that starts the program and launches the game loop
+        /// </summary>
         static void Main()
         {
             MainProcess game = new MainProcess();
             game.Run();
         }
 
+        /// <summary>
+        ///  The constructor for MainProcess, inits variables
+        /// </summary>
         public MainProcess()
         {
             graphics = new GraphicsDeviceManager(this);

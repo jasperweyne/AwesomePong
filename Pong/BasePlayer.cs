@@ -6,43 +6,48 @@ using System.Threading.Tasks;
 
 namespace Pong
 {
+    /// <summary>
+    ///  Base class for all player types
+    /// </summary>
     class BasePlayer
     {
-        /*
-         * The percentage that the player moved around the screen on his axis 
-         * 
-         * @value: 0 <= moved <= 1
-         */
+        /// <summary>
+        ///  The percentage that the player has moved with respect to his axis 
+        /// </summary>
+        /// <remarks>
+        ///  Values: 0 &lt;= moved &lt;= 1
+        /// </remarks>
         private float moved;
         
-        /*
-         * Whether the player moves along the x-axis or y-axis
-         * 
-         * @value:
-         * true:  x-axis
-         * false: y-axis
-         */
+        /// <summary>
+        ///  Boolean whether the player moves along the x-axis or y-axis
+        /// </summary>
+        /// <remarks>
+        ///  Values:
+        ///    true:  x-axis
+        ///    false: y-axis
+        /// </remarks>
         private bool x_y;
-
-        /*
-         * The percentage on screen of the width of the player
-         * 
-         * @value 0 <= width <= 1
-         */ 
+        
+        /// <summary>
+        ///  The percentage on screen of the width of the player
+        /// </summary>
+        /// <remarks>
+        ///  Values: 0 &lt;= width &lt;= 1
+        /// </remarks>
         private const float width = 0.2f;
-
-        /*
-         * The amount of pixels on screen of the depth of the player
-         * 
-         * @value 0 < depth 
-         */
+        
+        /// <summary>
+        ///  The amount of pixels on screen of the depth of the player
+        /// </summary>
+        /// <remarks>
+        ///  Values: 0 &lt;= width &lt;= 1
+        /// </remarks>
         private const int depth = 50;
 
-        /*
-         * The speed of the player
-         * 
-         * @value dunno yet?
-         */
+        /// <summary>
+        ///  The speed of the player
+        /// </summary>
         private const int speed = 200;
     }
 }
