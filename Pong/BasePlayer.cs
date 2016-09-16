@@ -41,7 +41,7 @@ namespace Pong
         ///  The amount of pixels on screen of the depth of the player
         /// </summary>
         /// <remarks>
-        ///  Values: 0 &lt;= width &lt;= 1
+        ///  Values: 0 &lt; depth
         /// </remarks>
         private const int depth = 50;
 
