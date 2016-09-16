@@ -4,10 +4,16 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
-    public class MainProcess : Game
+    public class MainProcess: Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        static void Main()
+        {
+            MainProcess game = new MainProcess();
+            game.Run();
+        }
 
         public MainProcess()
         {
