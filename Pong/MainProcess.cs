@@ -66,14 +66,8 @@ namespace Pong
                 Exit();
 
             // TODO: Add your update logic here
-            if (left != null)
-            {
-                left.Update();
-            }
-            if (right != null)
-            {
-                right.Update();
-            }
+            left?.Update();
+            right?.Update();
 
             base.Update(gameTime);
         }
@@ -84,14 +78,9 @@ namespace Pong
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            if (left != null)
-            {
-                left.Draw(spriteBatch);
-            }
-            if (right != null)
-            {
-                right.Draw(spriteBatch);
-            }
+            left?.Draw(spriteBatch);
+            right?.Draw(spriteBatch);
+            spriteBatch.End();
 
 
             base.Draw(gameTime);
