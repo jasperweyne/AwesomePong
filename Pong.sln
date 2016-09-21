@@ -7,12 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pong", "Pong\Pong.csproj", 
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{083073EC-5E9E-4482-99C6-F3F12827C166}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{083073EC-5E9E-4482-99C6-F3F12827C166}.Debug|x86.ActiveCfg = Debug|x86
 		{083073EC-5E9E-4482-99C6-F3F12827C166}.Debug|x86.Build.0 = Debug|x86
+		{083073EC-5E9E-4482-99C6-F3F12827C166}.Release|Any CPU.ActiveCfg = Release|x86
 		{083073EC-5E9E-4482-99C6-F3F12827C166}.Release|x86.ActiveCfg = Release|x86
 		{083073EC-5E9E-4482-99C6-F3F12827C166}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
