@@ -49,7 +49,7 @@ namespace Pong
             player1 = Content.Load<Texture2D>("blauweSpeler");
             left = new PlayerLeft(player1);
             player2 = Content.Load<Texture2D>("rodeSpeler");
-            left = new PlayerLeft(player2);
+            right = new PlayerRight(player2);
 
 
             // TODO: use this.Content to load your game content here

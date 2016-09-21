@@ -9,7 +9,7 @@ namespace Pong
         public PlayerRight(Texture2D tex) :
             base(tex)
         {
-            this.location = new Vector2(200, 300);
+            this.location = new Vector2(300, 50);
         }
 
         public override void Update()
