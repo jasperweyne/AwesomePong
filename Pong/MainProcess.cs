@@ -12,6 +12,9 @@ namespace Pong
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        PlayerLeft left = new PlayerLeft();
+        PlayerRight right = new PlayerRight();
+
         /// <summary>
         ///  The method that starts the program and launches the game loop
         /// </summary>
@@ -56,6 +59,8 @@ namespace Pong
                 Exit();
 
             // TODO: Add your update logic here
+            left.Update();
+            right.Update();
 
             base.Update(gameTime);
         }
