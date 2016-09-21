@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
-    class PlayerRight : BasePlayer
+    class PlayerRight : BaseObject
     {
         public PlayerRight(Texture2D tex) :
             base(tex)
         {
-            this.location = new Vector2(300, 50);
+            this.location = new Vector2(750, 50);
         }
 
         public override void Update()

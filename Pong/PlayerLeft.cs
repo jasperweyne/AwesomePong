@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
-    class PlayerLeft : BasePlayer
+    class PlayerLeft : BaseObject
     {
         public PlayerLeft(Texture2D tex):
             base(tex)

@@ -74,7 +74,7 @@ namespace Pong
         
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(255,0,255));
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();

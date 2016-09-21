@@ -38,7 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BasePlayer.cs" />
+    <Compile Include="BaseObject.cs" />
     <Compile Include="MainProcess.cs" />
     <Compile Include="PlayerLeft.cs" />
     <Compile Include="PlayerRight.cs" />

@@ -11,12 +11,12 @@ namespace Pong
     /// <summary>
     ///  Base class for all player types
     /// </summary>
-    abstract class BasePlayer
+    abstract class BaseObject
     {
         protected Vector2 location;
         private Texture2D view;
 
-        public BasePlayer(Texture2D tex)
+        public BaseObject(Texture2D tex)
         {
             this.view = tex;
         }
