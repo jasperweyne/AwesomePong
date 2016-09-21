@@ -14,10 +14,8 @@ namespace Pong
         SpriteBatch spriteBatch;
         Texture2D player1;
         Texture2D player2;
-
-
-        PlayerLeft left = new PlayerLeft();
-        PlayerRight right = new PlayerRight();
+        PlayerLeft left;
+        PlayerRight right;
 
         /// <summary>
         ///  The method that starts the program and launches the game loop
@@ -49,7 +47,9 @@ namespace Pong
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             player1 = Content.Load<Texture2D>("blauweSpeler");
+            left = new PlayerLeft(player1);
             player2 = Content.Load<Texture2D>("rodeSpeler");
+            left = new PlayerLeft(player2);
 
 
             // TODO: use this.Content to load your game content here
@@ -66,8 +66,14 @@ namespace Pong
                 Exit();
 
             // TODO: Add your update logic here
-            left.Update();
-            right.Update();
+            if (left != null)
+            {
+                left.Update();
+            }
+            if (right != null)
+            {
+                right.Update()
+            }
 
             base.Update(gameTime);
         }
@@ -78,9 +84,14 @@ namespace Pong
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(player1, new Vector2(0,0), Color.White);
-            spriteBatch.Draw(player2, new Vector2(100, 0), Color.White);
-            spriteBatch.End();
+            if (left != null)
+            {
+                left.Draw(spriteBatch);
+            }
+            if (right != null)
+            {
+                right.Draw(spriteBatch)
+            }
 
 
             base.Draw(gameTime);

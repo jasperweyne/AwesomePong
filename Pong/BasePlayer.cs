@@ -14,11 +14,17 @@ namespace Pong
     abstract class BasePlayer
     {
         protected Vector2 location;
+        private Texture2D view;
+
+        public BasePlayer(Texture2D tex)
+        {
+            this.view = tex;
+        }
 
         public abstract void Update();
-        public void draw(GraphicsDeviceManager graphics, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-
+            spriteBatch.Draw(view, location, Color.White);
         }
 
     }

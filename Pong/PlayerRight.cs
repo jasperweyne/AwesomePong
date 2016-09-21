@@ -1,11 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
     class PlayerRight : BasePlayer
     {
-        public PlayerRight()
+        public PlayerRight(Texture2D tex) :
+            base(tex)
         {
             this.location = new Vector2(450, 300);
         }
