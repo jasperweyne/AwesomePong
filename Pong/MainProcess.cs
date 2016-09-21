@@ -72,7 +72,7 @@ namespace Pong
             }
             if (right != null)
             {
-                right.Update()
+                right.Update();
             }
 
             base.Update(gameTime);
@@ -90,7 +90,7 @@ namespace Pong
             }
             if (right != null)
             {
-                right.Draw(spriteBatch)
+                right.Draw(spriteBatch);
             }
 
 
