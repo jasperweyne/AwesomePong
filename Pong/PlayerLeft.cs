@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pong
 {
-    class PlayerLeft : BaseObject
+    class PlayerLeft : Player
     {
         public PlayerLeft(Texture2D tex):
             base(tex)
@@ -17,11 +17,11 @@ namespace Pong
             KeyboardState state = Keyboard.GetState();
             if (state.IsKeyDown(Keys.S))
             {
-                this.location.Y += 5;
+                this.MoveDown();
             }
             if (state.IsKeyDown(Keys.W))
             {
-                this.location.Y -= 5;
+                this.MoveUp();
             }
         }
     }
