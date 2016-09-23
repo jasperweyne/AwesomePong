@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Ball.cs" />
     <Compile Include="BaseObject.cs" />
     <Compile Include="MainProcess.cs" />
     <Compile Include="Player.cs" />

@@ -14,8 +14,10 @@ namespace Pong
         SpriteBatch spriteBatch;
         Texture2D player1;
         Texture2D player2;
+        Texture2D ball_texture;
         PlayerLeft left;
         PlayerRight right;
+        Ball ball;
 
         /// <summary>
         ///  The method that starts the program and launches the game loop
@@ -50,6 +52,8 @@ namespace Pong
             left = new PlayerLeft(player1);
             player2 = Content.Load<Texture2D>("rodeSpeler");
             right = new PlayerRight(player2);
+            ball_texture = Content.Load<Texture2D>("bal");
+            ball = new Ball(ball_texture);
 
 
             // TODO: use this.Content to load your game content here
@@ -68,6 +72,7 @@ namespace Pong
             // TODO: Add your update logic here
             left?.Update();
             right?.Update();
+            ball?.Update();
 
             base.Update(gameTime);
         }
@@ -80,6 +85,7 @@ namespace Pong
             spriteBatch.Begin();
             left?.Draw(spriteBatch);
             right?.Draw(spriteBatch);
+            ball?.Draw(spriteBatch);
             spriteBatch.End();
 
 
