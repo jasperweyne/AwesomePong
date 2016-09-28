@@ -9,11 +9,9 @@ namespace Pong
     /// </summary>
     public class MainProcess: Game
     {
-        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D player1;
-        Texture2D player2;
+        Texture2D player;
         Texture2D ball_texture;
         PlayerLeft left;
         PlayerRight right;
@@ -51,11 +49,10 @@ namespace Pong
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            player1 = Content.Load<Texture2D>("blauweSpeler");
-            player2 = Content.Load<Texture2D>("rodeSpeler");
-            ball_texture = Content.Load<Texture2D>("bal");
-            left.SetTexture(player1);
-            right.SetTexture(player2);
+            player = Content.Load<Texture2D>("playerbar");
+            ball_texture = Content.Load<Texture2D>("unicorn");
+            left.SetTexture(player);
+            right.SetTexture(player);
             ball.SetTexture(ball_texture);
 
 
