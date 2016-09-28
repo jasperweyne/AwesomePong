@@ -6,8 +6,7 @@ namespace Pong
 {
     class PlayerLeft : Player
     {
-        public PlayerLeft(Texture2D tex):
-            base(tex)
+        public PlayerLeft()
         {
             this.location = new Vector2(50, 300);
         }

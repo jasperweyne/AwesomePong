@@ -10,7 +10,7 @@ namespace Pong
 {
     class Ball : BaseObject
     {
-        public Ball(Texture2D tex) : base(tex)
+        public Ball()
         {
             this.location = new Vector2(400, 240);
         }

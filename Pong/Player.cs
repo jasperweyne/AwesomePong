@@ -9,10 +9,6 @@ namespace Pong
 {
     abstract class Player : BaseObject
     {
-        public Player(Texture2D tex): base(tex)
-        {
-        }
-
         protected void MoveDown()
         {
             // Als onderkant (vandaar +96) van het plaatje hoger is

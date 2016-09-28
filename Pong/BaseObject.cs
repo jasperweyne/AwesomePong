@@ -16,7 +16,7 @@ namespace Pong
         protected Vector2 location;
         private Texture2D view;
 
-        public BaseObject(Texture2D tex)
+        public void SetTexture(Texture2D tex)
         {
             this.view = tex;
         }

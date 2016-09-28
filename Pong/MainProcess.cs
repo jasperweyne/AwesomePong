@@ -40,6 +40,9 @@ namespace Pong
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            left = new PlayerLeft();
+            right = new PlayerRight();
+            ball = new Ball();
 
             base.Initialize();
         }
@@ -49,11 +52,11 @@ namespace Pong
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             player1 = Content.Load<Texture2D>("blauweSpeler");
-            left = new PlayerLeft(player1);
             player2 = Content.Load<Texture2D>("rodeSpeler");
-            right = new PlayerRight(player2);
             ball_texture = Content.Load<Texture2D>("bal");
-            ball = new Ball(ball_texture);
+            left.SetTexture(player1);
+            right.SetTexture(player2);
+            ball.SetTexture(ball_texture);
 
 
             // TODO: use this.Content to load your game content here
