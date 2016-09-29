@@ -19,7 +19,7 @@ namespace Pong
             this.location = new Vector2(400, 240);
             this.left = left;
             this.right = right;
-            this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64))
+            this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64));
         }
 
         public override void Update()
