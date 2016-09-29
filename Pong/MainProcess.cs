@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace Pong
 {
@@ -16,6 +17,7 @@ namespace Pong
         PlayerLeft left;
         PlayerRight right;
         Ball ball;
+        Song PinkFluffyMotherfuckingUnicorn;
 
         /// <summary>
         ///  The method that starts the program and launches the game loop
@@ -41,6 +43,7 @@ namespace Pong
             left = new PlayerLeft();
             right = new PlayerRight();
             ball = new Ball(left, right);
+            //MediaPlayer.Play(PinkFluffyMotherfuckingUnicorn);
 
             base.Initialize();
         }
@@ -54,6 +57,7 @@ namespace Pong
             left.SetTexture(player);
             right.SetTexture(player);
             ball.SetTexture(ball_texture);
+            //PinkFluffyMotherfuckingUnicorn = Content.Load<Song>("pinkfluffyunicorn");
 
 
             // TODO: use this.Content to load your game content here
