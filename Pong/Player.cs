@@ -8,20 +8,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
-    abstract class Player : BaseObject
+    abstract class Player : GameElement
     {
-        private Rectangle Bounds = new Rectangle(0, 0, 34, 129);
-
-        public Rectangle GetBounds()
+        public Player()
         {
-            return this.Bounds;
+            this.Bounds = new Rectangle(0, 0, 34, 129);
         }
-
-        protected void UpdateBounds()
-        {
-            this.Bounds.Location = this.location.ToPoint();
-        }
-
         protected void MoveDown()
         {
             // Als onderkant (vandaar +96) van het plaatje hoger is

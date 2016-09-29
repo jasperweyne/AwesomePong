@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="Ball.cs" />
     <Compile Include="BaseObject.cs" />
+    <Compile Include="GameElement.cs" />
     <Compile Include="MainProcess.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerLeft.cs" />

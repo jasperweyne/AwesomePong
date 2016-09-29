@@ -40,7 +40,7 @@ namespace Pong
             // TODO: Add your initialization logic here
             left = new PlayerLeft();
             right = new PlayerRight();
-            ball = new Ball();
+            ball = new Ball(left, right);
 
             base.Initialize();
         }
@@ -72,7 +72,7 @@ namespace Pong
             // TODO: Add your update logic here
             left.Update();
             right.Update();
-            ball.Update(left, right);
+            ball.Update();
 
             base.Update(gameTime);
         }

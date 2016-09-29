@@ -6,7 +6,7 @@ namespace Pong
 {
     class PlayerRight : Player
     {
-        public PlayerRight()
+        public PlayerRight(): base()
         {
             this.location = new Vector2(750, 50);
         }
