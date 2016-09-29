@@ -10,7 +10,7 @@ namespace Pong
 {
     class Ball : GameElement
     {
-        private Vector2 movement = new Vector2(1, -3);
+        private Vector2 movement = new Vector2(-1, -3);
         private Player left;
         private Player right;
 
@@ -32,7 +32,17 @@ namespace Pong
                 this.movement.Y = -Math.Abs(this.movement.Y);
             }
 
+            if (Bounds.Intersects(left.GetBounds()))
+            {
+                this.movement.X = Math.Abs(this.movement.X);
+            }
+            else if (Bounds.Intersects(right.GetBounds()))
+            {
+                this.movement.X = -Math.Abs(this.movement.X);
+            }
+
             this.location += this.movement;
+            UpdateBounds();
         }
     }
 }
