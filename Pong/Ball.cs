@@ -39,10 +39,12 @@ namespace Pong
             if (Bounds.Intersects(left.GetBounds()))
             {
                 this.movement.X = Math.Abs(this.movement.X);
+                effect = SpriteEffects.None;
             }
             else if (Bounds.Intersects(right.GetBounds()))
             {
                 this.movement.X = -Math.Abs(this.movement.X);
+                effect = SpriteEffects.FlipHorizontally;
             }
 
             this.location += this.movement;
