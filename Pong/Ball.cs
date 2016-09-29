@@ -10,6 +10,8 @@ namespace Pong
 {
     class Ball : BaseObject
     {
+        private Vector2 movement = new Vector2(-3, 0);
+
         public Ball()
         {
             this.location = new Vector2(400, 240);
@@ -17,7 +19,7 @@ namespace Pong
 
         public override void Update()
         {
-            // dingen, nu nog niks
+            this.location += this.movement;
         }
     }
 }
