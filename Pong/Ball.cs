@@ -10,7 +10,7 @@ namespace Pong
 {
     class Ball : BaseObject
     {
-        private Vector2 movement = new Vector2(-3, 0);
+        private Vector2 movement = new Vector2(0, -3);
 
         public Ball()
         {
@@ -19,6 +19,14 @@ namespace Pong
 
         public override void Update()
         {
+            if (location.Y <= 0) {
+                this.movement.Y = Math.Abs(this.movement.Y);
+            }
+            else if (location.Y >= 420)
+            {
+                this.movement.Y = -Math.Abs(this.movement.Y);
+            }
+
             this.location += this.movement;
         }
     }
