@@ -14,7 +14,9 @@ namespace Pong
     abstract class BaseObject
     {
         protected Vector2 location;
-        private Texture2D view;
+        protected Texture2D view;
+        protected float rotation = 0.0f;
+        protected SpriteEffects effect = SpriteEffects.None;
 
         public void SetTexture(Texture2D tex)
         {
@@ -24,7 +26,7 @@ namespace Pong
         public abstract void Update();
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(view, location, Color.White);
+            spriteBatch.Draw(view, location, null, null, null, rotation, null, null, effect);
         }
 
     }
