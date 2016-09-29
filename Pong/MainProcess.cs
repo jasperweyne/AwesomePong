@@ -72,7 +72,7 @@ namespace Pong
             // TODO: Add your update logic here
             left.Update();
             right.Update();
-            ball.Update();
+            ball.Update(left, right);
 
             base.Update(gameTime);
         }

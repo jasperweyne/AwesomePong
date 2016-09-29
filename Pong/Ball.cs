@@ -10,14 +10,14 @@ namespace Pong
 {
     class Ball : BaseObject
     {
-        private Vector2 movement = new Vector2(0, -3);
+        private Vector2 movement = new Vector2(1, -3);
 
         public Ball()
         {
             this.location = new Vector2(400, 240);
         }
 
-        public override void Update()
+        public override void Update(Player left, Player right)
         {
             if (location.Y <= 0) {
                 this.movement.Y = Math.Abs(this.movement.Y);

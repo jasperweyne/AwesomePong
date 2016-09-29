@@ -22,6 +22,7 @@ namespace Pong
             {
                 this.MoveUp();
             }
+            UpdateBounds();
         }
     }
 }
