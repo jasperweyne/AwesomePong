@@ -13,7 +13,7 @@ namespace Pong
         {
             // Als onderkant (vandaar +96) van het plaatje hoger is
             // dan onderkant van het scherm, verplaats naar onder
-            if (this.location.Y + 96 < 480)
+            if (this.location.Y + 129 < 480)
             {
                 this.location.Y += 5;
             }
