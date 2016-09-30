@@ -11,11 +11,11 @@ namespace Pong
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D player;
-        Texture2D ball_texture;
-        Player left;
-        Player right;
-        Ball ball;
+
+        public static Texture2D player;
+        public static Texture2D ball_texture;
+
+        State state;
 
         /// <summary>
         ///  The method that starts the program and launches the game loop
@@ -35,33 +35,15 @@ namespace Pong
             Content.RootDirectory = "Content";
         }
         
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-            left = new PlayablePlayer(Keys.S, Keys.W, new Vector2(50, 300));
-            right = new PlayablePlayer(Keys.Down, Keys.Up, new Vector2(750, 50));
-            ball = new Ball(left, right);
-
-            base.Initialize();
-        }
-        
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             player = Content.Load<Texture2D>("playerbar");
             ball_texture = Content.Load<Texture2D>("unicorn");
-            left.SetTexture(player);
-            right.SetTexture(player);
-            ball.SetTexture(ball_texture);
-
+            state = new StateOfflineMulti();
 
             // TODO: use this.Content to load your game content here
-        }
-        
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
         }
         
         protected override void Update(GameTime gameTime)
@@ -69,10 +51,7 @@ namespace Pong
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-            left.Update();
-            right.Update();
-            ball.Update();
+            state.Update();
 
             base.Update(gameTime);
         }
@@ -83,9 +62,7 @@ namespace Pong
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            left.Draw(spriteBatch);
-            right.Draw(spriteBatch);
-            ball.Draw(spriteBatch);
+            state.Draw(spriteBatch);
             spriteBatch.End();
 
 

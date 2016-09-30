@@ -23,8 +23,8 @@ namespace Pong
             this.view = tex;
         }
 
-        public abstract void Update();
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Update() { }
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(view, location, null, null, null, rotation, null, null, effect);
         }
