@@ -9,17 +9,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
-    class Player : GameElement
+    abstract class Player : GameElement
     {
-        private Keys down;
-        private Keys up;
-
-        public Player(Keys down, Keys up, Vector2 loc)
+        public Player(Vector2 loc)
         {
             this.Bounds = new Rectangle(0, 0, 34, 129);
             this.location = loc;
-            this.down = down;
-            this.up = up;
         }
         protected void MoveDown()
         {
@@ -35,24 +30,10 @@ namespace Pong
         {
             // Als bovenkant van het plaatje lager is dan
             // de bovenkant van het scherm, verplaats naar boven
-            if (this.location.Y + 9 > 0)
+            if (this.location.Y + 9 > 48)
             {
                 this.location.Y -= 5;
             }
-        }
-
-        public override void Update()
-        {
-            KeyboardState state = Keyboard.GetState();
-            if (state.IsKeyDown(this.down))
-            {
-                this.MoveDown();
-            }
-            if (state.IsKeyDown(this.up))
-            {
-                this.MoveUp();
-            }
-            UpdateBounds();
         }
     }
 }

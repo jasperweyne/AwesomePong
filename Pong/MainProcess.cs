@@ -38,8 +38,8 @@ namespace Pong
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            left = new Player(Keys.S, Keys.W, new Vector2(50, 300));
-            right = new Player(Keys.Down, Keys.Up, new Vector2(750, 50));
+            left = new PlayablePlayer(Keys.S, Keys.W, new Vector2(50, 300));
+            right = new PlayablePlayer(Keys.Down, Keys.Up, new Vector2(750, 50));
             ball = new Ball(left, right);
 
             base.Initialize();

@@ -34,7 +34,7 @@ namespace Pong
 
         public override void Update()
         {
-            if (location.Y <= 0) {
+            if (location.Y <= 48) {
                 this.movement.Y = Math.Abs(this.movement.Y);
             }
             else if (location.Y >= 420)
