@@ -18,6 +18,7 @@ namespace Pong
         public static Texture2D GameBarTex;
 
         State state;
+        Song PinkFluffyMotherfuckingUnicorn;
 
         /// <summary>
         ///  The method that starts the program and launches the game loop
@@ -45,6 +46,7 @@ namespace Pong
             BallTex = Content.Load<Texture2D>("unicorn");
             TitleTex = Content.Load<Texture2D>("title");
             GameBarTex = Content.Load<Texture2D>("topbar");
+            //PinkFluffyMotherfuckingUnicorn = Content.Load<Song>("pinkfluffyunicorn");
             state = new StateOfflineMulti();
 
             // TODO: use this.Content to load your game content here
