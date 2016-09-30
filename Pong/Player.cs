@@ -4,15 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
-    abstract class Player : GameElement
+    class Player : GameElement
     {
-        public Player()
+        private Keys down;
+        private Keys up;
+
+        public Player(Keys down, Keys up, Vector2 loc)
         {
             this.Bounds = new Rectangle(0, 0, 34, 129);
+            this.location = loc;
+            this.down = down;
+            this.up = up;
         }
         protected void MoveDown()
         {
@@ -32,6 +39,20 @@ namespace Pong
             {
                 this.location.Y -= 5;
             }
+        }
+
+        public override void Update()
+        {
+            KeyboardState state = Keyboard.GetState();
+            if (state.IsKeyDown(this.down))
+            {
+                this.MoveDown();
+            }
+            if (state.IsKeyDown(this.up))
+            {
+                this.MoveUp();
+            }
+            UpdateBounds();
         }
     }
 }

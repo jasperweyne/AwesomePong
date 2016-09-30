@@ -13,8 +13,8 @@ namespace Pong
         SpriteBatch spriteBatch;
         Texture2D player;
         Texture2D ball_texture;
-        PlayerLeft left;
-        PlayerRight right;
+        Player left;
+        Player right;
         Ball ball;
 
         /// <summary>
@@ -38,8 +38,8 @@ namespace Pong
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            left = new PlayerLeft();
-            right = new PlayerRight();
+            left = new Player(Keys.S, Keys.W, new Vector2(50, 300));
+            right = new Player(Keys.Down, Keys.Up, new Vector2(750, 50));
             ball = new Ball(left, right);
 
             base.Initialize();

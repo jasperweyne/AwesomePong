@@ -43,8 +43,6 @@
     <Compile Include="GameElement.cs" />
     <Compile Include="MainProcess.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerLeft.cs" />
-    <Compile Include="PlayerRight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
