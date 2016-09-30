@@ -12,8 +12,10 @@ namespace Pong
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public static Texture2D player;
-        public static Texture2D ball_texture;
+        public static Texture2D PlayerTex;
+        public static Texture2D BallTex;
+        public static Texture2D TitleTex;
+        public static Texture2D GameBarTex;
 
         State state;
 
@@ -39,8 +41,10 @@ namespace Pong
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            player = Content.Load<Texture2D>("playerbar");
-            ball_texture = Content.Load<Texture2D>("unicorn");
+            PlayerTex = Content.Load<Texture2D>("playerbar");
+            BallTex = Content.Load<Texture2D>("unicorn");
+            TitleTex = Content.Load<Texture2D>("title");
+            GameBarTex = Content.Load<Texture2D>("topbar");
             state = new StateOfflineMulti();
 
             // TODO: use this.Content to load your game content here

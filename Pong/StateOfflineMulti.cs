@@ -15,9 +15,9 @@ namespace Pong
             left = new PlayablePlayer(Keys.S, Keys.W, new Vector2(50, 300));
             right = new PlayablePlayer(Keys.Down, Keys.Up, new Vector2(750, 50));
             ball = new Ball(left, right);
-            left.SetTexture(MainProcess.player);
-            right.SetTexture(MainProcess.player);
-            ball.SetTexture(MainProcess.ball_texture);
+            left.SetTexture(MainProcess.PlayerTex);
+            right.SetTexture(MainProcess.PlayerTex);
+            ball.SetTexture(MainProcess.BallTex);
         }
 
         public override void Update() {
@@ -27,6 +27,7 @@ namespace Pong
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
+            spriteBatch.Draw(MainProcess.GameBarTex, new Vector2(0, 48), Color.White);
             left.Draw(spriteBatch);
             right.Draw(spriteBatch);
             ball.Draw(spriteBatch);
