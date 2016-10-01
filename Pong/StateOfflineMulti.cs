@@ -27,6 +27,7 @@ namespace Pong
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
+            spriteBatch.Draw(MainProcess.TitleTex, new Vector2(330, 9), Color.White);
             spriteBatch.Draw(MainProcess.GameBarTex, new Vector2(0, 48), Color.White);
             left.Draw(spriteBatch);
             right.Draw(spriteBatch);
