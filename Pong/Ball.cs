@@ -11,10 +11,10 @@ namespace Pong
     class Ball : GameElement
     {
         private Vector2 movement;
-        private List<Player> playerList;
+        private List<GameElement> elemList;
         static Random r = new Random();
 
-        public Ball(List<Player> playerList)
+        public Ball(List<GameElement> elemList)
         {
             int dir = r.Next(180);
             if (dir >= 90)
@@ -26,13 +26,12 @@ namespace Pong
             const double speed = 4;
             this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
             this.location = new Vector2(400, 240);
-            this.playerList = playerList;
+            this.elemList = elemList;
             this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64));
         }
 
         public override void Update()
         {
-            Vector2 oldLoc = this.location;
             if (this.location.Y <= 50) {
                 this.movement.Y = Math.Abs(this.movement.Y);
             }
@@ -43,8 +42,9 @@ namespace Pong
             this.location += this.movement;
             UpdateBounds();
 
-            foreach (Player player in this.playerList) {
-                if (this.Bounds.Intersects(player.GetBounds())) {
+            Vector2 oldLoc = this.location;
+            foreach (GameElement elem in this.elemList) {
+                if (this.Bounds.Intersects(elem.GetBounds())) {
                     this.location.Y = oldLoc.Y;
                     this.movement.X = -this.movement.X;
 
