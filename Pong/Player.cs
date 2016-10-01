@@ -11,10 +11,39 @@ namespace Pong
 {
     abstract class Player : GameElement
     {
-        public Player(Vector2 loc)
+        protected ScreenLocation scrLoc;
+        private Vector2 locModif;
+
+        public enum ScreenLocation {
+            Top,
+            Right,
+            Bottom,
+            Left
+        }
+        public Player(ScreenLocation scrLoc)
         {
-            this.Bounds = new Rectangle(0, 0, 16, 112);
-            this.location = loc;
+            this.scrLoc = scrLoc;
+            switch (scrLoc) {
+                case ScreenLocation.Top:
+                case ScreenLocation.Bottom:
+                    if (scrLoc == ScreenLocation.Top)
+                        this.location = new Vector2(345, 100);
+                    else
+                        this.location = new Vector2(345, 430);
+                    this.locModif = new Vector2(8, 9);
+                    this.Bounds = new Rectangle(0, 0, 112, 16);
+                    this.rotation = 90;
+                    break;
+                case ScreenLocation.Left:
+                case ScreenLocation.Right:
+                    if (scrLoc == ScreenLocation.Left)
+                        this.location = new Vector2(50, 185);
+                    else
+                        this.location = new Vector2(750, 185);
+                    this.locModif = new Vector2(9, 8);
+                    this.Bounds = new Rectangle(0, 0, 16, 112);
+                    break;
+            }
         }
         protected void MoveDown()
         {
@@ -41,7 +70,7 @@ namespace Pong
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(view, location - new Vector2(9, 8), null, null, null, rotation, null, null, effect);
+            spriteBatch.Draw(this.view, this.location - this.locModif, null, null, null, this.rotation, null, null, this.effect);
         }
     }
 }
