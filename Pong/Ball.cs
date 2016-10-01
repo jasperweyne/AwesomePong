@@ -42,6 +42,8 @@ namespace Pong
 
         public override void Update()
         {
+            Vector2 oldLoc = this.location;
+
             if (this.location.Y <= 50) {
                 this.movement.Y = Math.Abs(this.movement.Y);
             }
@@ -56,7 +58,6 @@ namespace Pong
             }
             UpdateLoc();
 
-            Vector2 oldLoc = this.location;
             foreach (GameElement elem in this.elemList) {
                 if (this.Bounds.Intersects(elem.GetBounds())) {
                     this.location.Y = oldLoc.Y;
