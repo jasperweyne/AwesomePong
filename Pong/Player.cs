@@ -31,7 +31,7 @@ namespace Pong
                     else
                         this.location = new Vector2(345, 430);
                     this.locModif = new Vector2(8, 9);
-                    this.Bounds = new Rectangle(0, 0, 112, 16);
+                    this.Bounds = new Rectangle(this.location.ToPoint(), new Point(112, 16));
                     this.rotation = 90;
                     break;
                 case ScreenLocation.Left:
@@ -41,7 +41,7 @@ namespace Pong
                     else
                         this.location = new Vector2(750, 185);
                     this.locModif = new Vector2(9, 8);
-                    this.Bounds = new Rectangle(0, 0, 16, 112);
+                    this.Bounds = new Rectangle(this.location.ToPoint(), new Point(16, 112));
                     break;
             }
         }
