@@ -15,7 +15,7 @@ namespace Pong
         public StateOfflineMulti() {
             left = new PlayablePlayer(Keys.S, Keys.W, Player.ScreenLocation.Left);
             right = new PlayablePlayer(Keys.Down, Keys.Up, Player.ScreenLocation.Right);
-            ball = new Ball(new List<Player> { left, right });
+            ball = new Ball(new List<GameElement> { left, right });
             left.SetTexture(MainProcess.PlayerTex);
             right.SetTexture(MainProcess.PlayerTex);
             ball.SetTexture(MainProcess.BallTex);

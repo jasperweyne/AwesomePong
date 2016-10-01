@@ -39,6 +39,11 @@ namespace Pong
             {
                 this.movement.Y = -Math.Abs(this.movement.Y);
             }
+            if (this.location.X <= 0) {
+                this.movement.X = Math.Abs(this.movement.X);
+            } else if (this.location.X + this.Bounds.Width >= 800) {
+                this.movement.X = -Math.Abs(this.movement.X);
+            }
             this.location += this.movement;
             UpdateBounds();
 
