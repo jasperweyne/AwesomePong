@@ -30,6 +30,16 @@ namespace Pong
             this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64));
         }
 
+        private void UpdateLoc()
+        {
+            this.location += this.movement;
+            UpdateBounds();
+            if (this.movement.X < 0)
+                this.effect = SpriteEffects.FlipHorizontally;
+            else
+                this.effect = SpriteEffects.None;
+        }
+
         public override void Update()
         {
             if (this.location.Y <= 50) {
@@ -44,22 +54,14 @@ namespace Pong
             } else if (this.location.X + this.Bounds.Width >= 800) {
                 this.movement.X = -Math.Abs(this.movement.X);
             }
-            this.location += this.movement;
-            UpdateBounds();
+            UpdateLoc();
 
             Vector2 oldLoc = this.location;
             foreach (GameElement elem in this.elemList) {
                 if (this.Bounds.Intersects(elem.GetBounds())) {
                     this.location.Y = oldLoc.Y;
                     this.movement.X = -this.movement.X;
-
-                    this.location += this.movement;
-                    UpdateBounds();
-
-                    if (this.movement.X < 0)
-                        this.effect = SpriteEffects.FlipHorizontally;
-                    else
-                        this.effect = SpriteEffects.None;
+                    UpdateLoc();
                 }
             }
         }
