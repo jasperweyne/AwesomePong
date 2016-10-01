@@ -16,13 +16,13 @@ namespace Pong
 
         public Ball(List<GameElement> elemList)
         {
-            int dir = r.Next(180);
-            if (dir >= 90)
+            double dir = r.NextDouble() * Math.PI;
+            if (dir >= Math.PI / 2)
             {
-                dir += 90;
+                dir += Math.PI / 2;
                 effect = SpriteEffects.FlipHorizontally;
             }
-            dir -= 45;
+            dir -= Math.PI / 4;
             const double speed = 4;
             this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
             this.location = new Vector2(400, 240);
