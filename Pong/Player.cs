@@ -33,7 +33,7 @@ namespace Pong
                         this.location = new Vector2(345, 430);
                     this.locModif = new Vector2(8, 9);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(112, 16));
-                    this.rotation = (float)Math.PI / 2;
+                    this.rotation = -(float)Math.PI / 2;
                     break;
                 case ScreenLocation.Left:
                 case ScreenLocation.Right:
