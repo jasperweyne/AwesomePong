@@ -14,7 +14,7 @@ namespace Pong
         private static Random r = new Random();
         private Player last;
 
-        public Ball(GameState state)
+        public Ball(GameState state, Texture2D tex): base(tex)
         {
             double dir = r.NextDouble() * Math.PI;
             if (dir >= Math.PI / 2) {

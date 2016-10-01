@@ -21,7 +21,7 @@ namespace Pong
             Bottom,
             Left
         }
-        public Player(GameState state, ScreenLocation scrLoc)
+        public Player(GameState state, Texture2D tex, ScreenLocation scrLoc): base(tex)
         {
             this.ScreenSide = scrLoc;
             switch (scrLoc) {

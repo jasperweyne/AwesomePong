@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
@@ -8,7 +9,7 @@ namespace Pong
         private Keys down;
         private Keys up;
 
-        public PlayablePlayer(GameState state, Keys down, Keys up, ScreenLocation scrLoc) : base(state, scrLoc)
+        public PlayablePlayer(GameState state, Texture2D tex, Keys down, Keys up, ScreenLocation scrLoc) : base(state, tex, scrLoc)
         {
             this.down = down;
             this.up = up;

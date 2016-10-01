@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Pong
 {
-    public abstract class State : BaseObject
+    public abstract class State
     {
+        public abstract void Update();
+        public abstract void Draw();
     }
 }

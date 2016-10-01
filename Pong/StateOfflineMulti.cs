@@ -14,12 +14,9 @@ namespace Pong
         public StateOfflineMulti(GraphicsDevice graphics)
         {
             this.Field = new Rectangle(0, 50, graphics.Viewport.Width, graphics.Viewport.Height - 50);
-            left = new PlayablePlayer(this, Keys.S, Keys.W, Player.ScreenLocation.Left);
-            right = new PlayablePlayer(this, Keys.Down, Keys.Up, Player.ScreenLocation.Right);
-            GameElement ball = new Ball(this);
-            left.SetTexture(MainProcess.PlayerTex);
-            right.SetTexture(MainProcess.PlayerTex);
-            ball.SetTexture(MainProcess.BallTex);
+            left = new PlayablePlayer(this, MainProcess.PlayerTex, Keys.S, Keys.W, Player.ScreenLocation.Left);
+            right = new PlayablePlayer(this, MainProcess.PlayerTex, Keys.Down, Keys.Up, Player.ScreenLocation.Right);
+            GameElement ball = new Ball(this, MainProcess.BallTex);
             this.Elems.Add(left);
             this.Elems.Add(right);
             this.Elems.Add(ball);

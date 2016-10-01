@@ -18,7 +18,7 @@ namespace Pong
         protected float rotation = 0.0f;
         protected SpriteEffects effect = SpriteEffects.None;
 
-        public void SetTexture(Texture2D tex)
+        public BaseObject(Texture2D tex)
         {
             this.view = tex;
         }
