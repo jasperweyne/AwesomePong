@@ -34,23 +34,22 @@ namespace Pong
 
         public override void Update()
         {
-            if (location.Y <= 48) {
+            if (this.location.Y <= 50) {
                 this.movement.Y = Math.Abs(this.movement.Y);
             }
-            else if (location.Y >= 420)
+            else if (this.location.Y + this.Bounds.Height >= 480)
             {
                 this.movement.Y = -Math.Abs(this.movement.Y);
             }
 
-            if (Bounds.Intersects(left.GetBounds()))
-            {
+            if (this.Bounds.Intersects(this.left.GetBounds())) {
                 this.movement.X = Math.Abs(this.movement.X);
-                effect = SpriteEffects.None;
+                this.effect = SpriteEffects.None;
             }
-            else if (Bounds.Intersects(right.GetBounds()))
+            else if (this.Bounds.Intersects(right.GetBounds()))
             {
                 this.movement.X = -Math.Abs(this.movement.X);
-                effect = SpriteEffects.FlipHorizontally;
+                this.effect = SpriteEffects.FlipHorizontally;
             }
 
             this.location += this.movement;
