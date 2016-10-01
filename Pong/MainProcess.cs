@@ -17,9 +17,12 @@ namespace Pong
         public static Texture2D BallTex;
         public static Texture2D TitleTex;
         public static Texture2D GameBarTex;
+        public static SpriteFont ClassyAsFuckFont;  // parisienne
+        public static SpriteFont FuckingPrettyFont; // #comicsans ftw!
         public static GameState GState;
 
         State state;
+
         Song PinkFluffyMotherfuckingUnicorn;
 
         /// <summary>
@@ -48,6 +51,7 @@ namespace Pong
             BallTex = Content.Load<Texture2D>("unicorn");
             TitleTex = Content.Load<Texture2D>("title");
             GameBarTex = Content.Load<Texture2D>("topbar");
+            //ClassyAsFuckFont = Content.Load<SpriteFont>();
             //PinkFluffyMotherfuckingUnicorn = Content.Load<Song>("pinkfluffyunicorn");
             GState = new StateOfflineMulti(GraphicsDevice);
             state = GState;

@@ -33,6 +33,8 @@ namespace Pong
         {
             spriteBatch.Draw(MainProcess.GameBarTex, Vector2.Zero, Color.White);
             spriteBatch.Draw(MainProcess.TitleTex, new Vector2(330, 9), Color.White);
+            //spriteBatch.DrawString(null, left.Lives.ToString(), new Vector2(0, 0), Color.White);
+            //spriteBatch.DrawString(null, left.Lives.ToString(), new Vector2(750, 0), Color.White);
             left.Draw(spriteBatch);
             right.Draw(spriteBatch);
             ball.Draw(spriteBatch);

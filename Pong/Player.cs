@@ -12,6 +12,7 @@ namespace Pong
     abstract class Player : GameElement
     {
         public ScreenLocation ScreenSide { get; }
+        public int Lives = 3;
         private Vector2 locModif;
 
         public enum ScreenLocation {
