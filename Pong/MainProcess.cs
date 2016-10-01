@@ -51,7 +51,7 @@ namespace Pong
             BallTex = Content.Load<Texture2D>("unicorn");
             TitleTex = Content.Load<Texture2D>("title");
             GameBarTex = Content.Load<Texture2D>("topbar");
-            //ClassyAsFuckFont = Content.Load<SpriteFont>();
+            ClassyAsFuckFont = Content.Load<SpriteFont>("Parisienne");
             //PinkFluffyMotherfuckingUnicorn = Content.Load<Song>("pinkfluffyunicorn");
             GState = new StateOfflineMulti(GraphicsDevice);
             state = GState;
