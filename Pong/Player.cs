@@ -11,7 +11,7 @@ namespace Pong
 {
     abstract class Player : GameElement
     {
-        protected ScreenLocation scrLoc;
+        public ScreenLocation ScreenSide { get; }
         private Vector2 locModif;
 
         public enum ScreenLocation {
@@ -22,7 +22,7 @@ namespace Pong
         }
         public Player(ScreenLocation scrLoc)
         {
-            this.scrLoc = scrLoc;
+            this.ScreenSide = scrLoc;
             switch (scrLoc) {
                 case ScreenLocation.Top:
                 case ScreenLocation.Bottom:
@@ -32,7 +32,7 @@ namespace Pong
                         this.location = new Vector2(345, 430);
                     this.locModif = new Vector2(8, 9);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(112, 16));
-                    this.rotation = 90;
+                    this.rotation = 1.57079633f; // 90 degrees in radians
                     break;
                 case ScreenLocation.Left:
                 case ScreenLocation.Right:

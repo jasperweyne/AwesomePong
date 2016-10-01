@@ -11,11 +11,10 @@ namespace Pong
     class Ball : GameElement
     {
         private Vector2 movement;
-        private Player left;
-        private Player right;
+        private List<Player> playerList;
         static Random r = new Random();
 
-        public Ball(Player left, Player right)
+        public Ball(List<Player> playerList)
         {
             int dir = r.Next(180);
             if (dir >= 90)
@@ -27,13 +26,13 @@ namespace Pong
             const double speed = 4;
             this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
             this.location = new Vector2(400, 240);
-            this.left = left;
-            this.right = right;
+            this.playerList = playerList;
             this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64));
         }
 
         public override void Update()
         {
+            Vector2 oldLoc = this.location;
             if (this.location.Y <= 50) {
                 this.movement.Y = Math.Abs(this.movement.Y);
             }
@@ -41,19 +40,23 @@ namespace Pong
             {
                 this.movement.Y = -Math.Abs(this.movement.Y);
             }
-
-            if (this.Bounds.Intersects(this.left.GetBounds())) {
-                this.movement.X = Math.Abs(this.movement.X);
-                this.effect = SpriteEffects.None;
-            }
-            else if (this.Bounds.Intersects(right.GetBounds()))
-            {
-                this.movement.X = -Math.Abs(this.movement.X);
-                this.effect = SpriteEffects.FlipHorizontally;
-            }
-
             this.location += this.movement;
             UpdateBounds();
+
+            foreach (Player player in this.playerList) {
+                if (this.Bounds.Intersects(player.GetBounds())) {
+                    this.location.Y = oldLoc.Y;
+                    this.movement.X = -this.movement.X;
+
+                    this.location += this.movement;
+                    UpdateBounds();
+
+                    if (this.movement.X < 0)
+                        this.effect = SpriteEffects.FlipHorizontally;
+                    else
+                        this.effect = SpriteEffects.None;
+                }
+            }
         }
     }
 }
