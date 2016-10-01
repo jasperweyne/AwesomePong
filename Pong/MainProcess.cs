@@ -10,8 +10,8 @@ namespace Pong
     /// </summary>
     public class MainProcess: Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public static GraphicsDeviceManager graphics;
+        public static SpriteBatch spriteBatch;
 
         public static Texture2D PlayerTex;
         public static Texture2D BallTex;
@@ -19,11 +19,23 @@ namespace Pong
         public static Texture2D GameBarTex;
         public static SpriteFont ClassyAsFuckFont;  // parisienne
         public static SpriteFont FuckingPrettyFont; // #comicsans ftw!
-        public static GameState GState;
 
-        State state;
+        public static GameState GState
+        {
+            get {
+                if (State is GameState)
+                    return (GameState)State;
+                return null;
+            }
+        }
+        public static State State;
 
         Song PinkFluffyMotherfuckingUnicorn;
+
+        public static void ChangeState(State state)
+        {
+            State = state;
+        }
 
         /// <summary>
         ///  The method that starts the program and launches the game loop
@@ -53,8 +65,7 @@ namespace Pong
             GameBarTex = Content.Load<Texture2D>("topbar");
             ClassyAsFuckFont = Content.Load<SpriteFont>("Parisienne");
             //PinkFluffyMotherfuckingUnicorn = Content.Load<Song>("pinkfluffyunicorn");
-            GState = new StateOfflineMulti(GraphicsDevice);
-            state = GState;
+            State = new StateOfflineMulti(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -64,7 +75,7 @@ namespace Pong
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            state.Update();
+            State.Update();
 
             base.Update(gameTime);
         }
@@ -75,7 +86,7 @@ namespace Pong
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            state.Draw(spriteBatch);
+            State.Draw();
             spriteBatch.End();
 
 

@@ -10,34 +10,30 @@ namespace Pong
     {
         Player left;
         Player right;
-        Ball ball;
 
         public StateOfflineMulti(GraphicsDevice graphics)
         {
             this.Field = new Rectangle(0, 50, graphics.Viewport.Width, graphics.Viewport.Height - 50);
             left = new PlayablePlayer(this, Keys.S, Keys.W, Player.ScreenLocation.Left);
             right = new PlayablePlayer(this, Keys.Down, Keys.Up, Player.ScreenLocation.Right);
-            ball = new Ball(this, new List<GameElement> { left, right });
+            GameElement ball = new Ball(this);
             left.SetTexture(MainProcess.PlayerTex);
             right.SetTexture(MainProcess.PlayerTex);
             ball.SetTexture(MainProcess.BallTex);
+            this.Elems.Add(left);
+            this.Elems.Add(right);
+            this.Elems.Add(ball);
         }
 
-        public override void Update() {
-            left.Update();
-            right.Update();
-            ball.Update();
-        }
-
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw()
         {
-            spriteBatch.Draw(MainProcess.GameBarTex, Vector2.Zero, Color.White);
-            spriteBatch.Draw(MainProcess.TitleTex, new Vector2(330, 9), Color.White);
-            spriteBatch.DrawString(MainProcess.ClassyAsFuckFont, left.Lives.ToString(), new Vector2(0, 0), Color.White);
-            spriteBatch.DrawString(MainProcess.ClassyAsFuckFont, right.Lives.ToString(), new Vector2(750, 0), Color.White);
-            left.Draw(spriteBatch);
-            right.Draw(spriteBatch);
-            ball.Draw(spriteBatch);
+            base.Draw();
+            MainProcess.spriteBatch.Draw(MainProcess.GameBarTex, Vector2.Zero, Color.White);
+            MainProcess.spriteBatch.Draw(MainProcess.TitleTex, new Vector2(330, 9), Color.White);
+            if (left != null)
+                MainProcess.spriteBatch.DrawString(MainProcess.ClassyAsFuckFont, left.Lives.ToString(), new Vector2(0, 0), Color.White);
+            if (right != null)
+                MainProcess.spriteBatch.DrawString(MainProcess.ClassyAsFuckFont, right.Lives.ToString(), new Vector2(750, 0), Color.White);
         }
     }
 }

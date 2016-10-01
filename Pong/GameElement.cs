@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Pong
 {
-    abstract class GameElement: BaseObject
+    public abstract class GameElement: BaseObject
     {
         protected Rectangle Bounds;
 

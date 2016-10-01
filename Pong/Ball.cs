@@ -8,22 +8,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
-    class Ball : GameElement
+    public class Ball : GameElement
     {
         private Vector2 movement;
-        private List<GameElement> elemList;
-        static Random r = new Random();
+        private static Random r = new Random();
+        private Player last;
 
-        private bool top    = true;
-        private bool bottom = true;
-        private bool left   = true;
-        private bool right  = true;
-
-        public Ball(GameState state, List<GameElement> elemList)
+        public Ball(GameState state)
         {
             double dir = r.NextDouble() * Math.PI;
-            if (dir >= Math.PI / 2)
-            {
+            if (dir >= Math.PI / 2) {
                 dir += Math.PI / 2;
                 effect = SpriteEffects.FlipHorizontally;
             }
@@ -31,28 +25,20 @@ namespace Pong
             const double speed = 4;
             this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
             this.location = state.Field.Center.ToVector2();
-            this.elemList = elemList;
             this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64));
-            
-            foreach (GameElement elem in elemList) {
-                if (elem is Player) {
-                    Player player = (Player)elem;
-                    switch (player.ScreenSide) {
-                        case Player.ScreenLocation.Top:
-                            this.top = false;
-                            break;
-                        case Player.ScreenLocation.Bottom:
-                            this.bottom = false;
-                            break;
-                        case Player.ScreenLocation.Left:
-                            this.left = false;
-                            break;
-                        case Player.ScreenLocation.Right:
-                            this.right = false;
-                            break;
-                    }
-                }
+        }
+
+        public void Reset()
+        {
+            double dir = r.NextDouble() * Math.PI;
+            if (dir >= Math.PI / 2) {
+                dir += Math.PI / 2;
+                effect = SpriteEffects.FlipHorizontally;
             }
+            dir -= Math.PI / 4;
+            const double speed = 4;
+            this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
+            this.location = MainProcess.GState.Field.Center.ToVector2();
         }
 
         private void UpdateLoc()
@@ -65,33 +51,50 @@ namespace Pong
                 this.effect = SpriteEffects.None;
         }
 
+        private Player getPlayer(Player.ScreenLocation loc)
+        {
+            return MainProcess.GState.Elems.OfType<Player>().SingleOrDefault<Player>(player => player.ScreenSide == loc);
+        }
+
         public override void Update()
         {
             Vector2 oldLoc = this.location;
 
             if (this.location.Y <= MainProcess.GState.Field.Top) {
-                if (this.top)
+                Player hit = getPlayer(Player.ScreenLocation.Top);
+                if (hit == null)
                     this.movement.Y = Math.Abs(this.movement.Y);
-            }
-            else if (this.location.Y + this.Bounds.Height >= MainProcess.GState.Field.Bottom)
-            {
-                if (this.bottom)
+                else if (this.location.Y + this.Bounds.Height <= MainProcess.GState.Field.Top)
+                    MainProcess.GState.Hit(this, hit, last);
+            } else if (this.location.Y + this.Bounds.Height >= MainProcess.GState.Field.Bottom) {
+                Player hit = getPlayer(Player.ScreenLocation.Bottom);
+                if (hit == null)
                     this.movement.Y = -Math.Abs(this.movement.Y);
+                else if (this.location.Y >= MainProcess.GState.Field.Bottom)
+                    MainProcess.GState.Hit(this, hit, last);
             }
             if (this.location.X <= MainProcess.GState.Field.Left) {
-                if (this.left)
+                Player hit = getPlayer(Player.ScreenLocation.Left);
+                if (hit == null)
                     this.movement.X = Math.Abs(this.movement.X);
+                else if (this.location.X + this.Bounds.Width <= MainProcess.GState.Field.Left)
+                    MainProcess.GState.Hit(this, hit, last);
             } else if (this.location.X + this.Bounds.Width >= MainProcess.GState.Field.Right) {
-                if (this.right)
+                Player hit = getPlayer(Player.ScreenLocation.Right);
+                if (hit == null)
                     this.movement.X = -Math.Abs(this.movement.X);
+                else if (this.location.X >= MainProcess.GState.Field.Right)
+                    MainProcess.GState.Hit(this, hit, last);
             }
             UpdateLoc();
 
-            foreach (GameElement elem in this.elemList) {
-                if (this.Bounds.Intersects(elem.GetBounds())) {
+            foreach (GameElement elem in MainProcess.GState.Elems) {
+                if (this.Bounds.Intersects(elem.GetBounds()) && elem != this) {
                     this.location.Y = oldLoc.Y;
                     this.movement.X = -this.movement.X;
                     UpdateLoc();
+                    if (elem is Player)
+                        this.last = (Player)elem;
                 }
             }
         }

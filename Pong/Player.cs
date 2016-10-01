@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
 {
-    abstract class Player : GameElement
+    public abstract class Player : GameElement
     {
         public ScreenLocation ScreenSide { get; }
         public int Lives = 3;
@@ -33,7 +33,7 @@ namespace Pong
                         this.location = new Vector2(345, 430);
                     this.locModif = new Vector2(8, 9);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(112, 16));
-                    this.rotation = 1.57079633f; // 90 degrees in radians
+                    this.rotation = (float)Math.PI / 2;
                     break;
                 case ScreenLocation.Left:
                 case ScreenLocation.Right:
@@ -69,9 +69,9 @@ namespace Pong
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw()
         {
-            spriteBatch.Draw(this.view, this.location - this.locModif, null, null, null, this.rotation, null, null, this.effect);
+            MainProcess.spriteBatch.Draw(this.view, this.location - this.locModif, null, null, null, this.rotation, null, null, this.effect);
         }
     }
 }

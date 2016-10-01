@@ -24,9 +24,9 @@ namespace Pong
         }
 
         public virtual void Update() { }
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw()
         {
-            spriteBatch.Draw(view, location, null, null, null, rotation, null, null, effect);
+            MainProcess.spriteBatch.Draw(view, location, null, null, null, rotation, null, null, effect);
         }
 
     }
