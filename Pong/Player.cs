@@ -20,7 +20,7 @@ namespace Pong
             Bottom,
             Left
         }
-        public Player(ScreenLocation scrLoc)
+        public Player(GameState state, ScreenLocation scrLoc)
         {
             this.ScreenSide = scrLoc;
             switch (scrLoc) {
@@ -49,10 +49,10 @@ namespace Pong
         {
             // Als onderkant (vandaar +96) van het plaatje hoger is
             // dan onderkant van het scherm, verplaats naar onder
-            if (this.location.Y + this.Bounds.Height + 5 < 480) {
+            if (this.location.Y + this.Bounds.Height + 5 < MainProcess.GState.Field.Bottom) {
                 this.location.Y += 5;
             } else {
-                this.location.Y = 480 - this.Bounds.Height;
+                this.location.Y = MainProcess.GState.Field.Bottom - this.Bounds.Height;
             }
         }
 
@@ -60,11 +60,11 @@ namespace Pong
         {
             // Als bovenkant van het plaatje lager is dan
             // de bovenkant van het scherm, verplaats naar boven
-            if (this.location.Y - 5 > 50)
+            if (this.location.Y - 5 > MainProcess.GState.Field.Top)
             {
                 this.location.Y -= 5;
             } else {
-                this.location.Y = 50;
+                this.location.Y = MainProcess.GState.Field.Top;
             }
         }
 

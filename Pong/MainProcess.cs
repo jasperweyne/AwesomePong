@@ -17,6 +17,7 @@ namespace Pong
         public static Texture2D BallTex;
         public static Texture2D TitleTex;
         public static Texture2D GameBarTex;
+        public static GameState GState;
 
         State state;
         Song PinkFluffyMotherfuckingUnicorn;
@@ -48,7 +49,8 @@ namespace Pong
             TitleTex = Content.Load<Texture2D>("title");
             GameBarTex = Content.Load<Texture2D>("topbar");
             //PinkFluffyMotherfuckingUnicorn = Content.Load<Song>("pinkfluffyunicorn");
-            state = new StateOfflineMulti();
+            GState = new StateOfflineMulti(GraphicsDevice);
+            state = GState;
 
             // TODO: use this.Content to load your game content here
         }

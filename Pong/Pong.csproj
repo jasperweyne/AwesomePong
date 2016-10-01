@@ -41,6 +41,7 @@
     <Compile Include="Ball.cs" />
     <Compile Include="BaseObject.cs" />
     <Compile Include="GameElement.cs" />
+    <Compile Include="GameState.cs" />
     <Compile Include="MainProcess.cs" />
     <Compile Include="PlayablePlayer.cs" />
     <Compile Include="Player.cs" />

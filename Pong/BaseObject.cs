@@ -11,7 +11,7 @@ namespace Pong
     /// <summary>
     ///  Base class for all player types
     /// </summary>
-    abstract class BaseObject
+    public abstract class BaseObject
     {
         protected Vector2 location;
         protected Texture2D view;

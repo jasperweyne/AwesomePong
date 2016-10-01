@@ -8,7 +8,7 @@ namespace Pong
         private Keys down;
         private Keys up;
 
-        public PlayablePlayer(Keys down, Keys up, ScreenLocation scrLoc) : base(scrLoc)
+        public PlayablePlayer(GameState state, Keys down, Keys up, ScreenLocation scrLoc) : base(state, scrLoc)
         {
             this.down = down;
             this.up = up;
