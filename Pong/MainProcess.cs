@@ -32,11 +32,6 @@ namespace Pong
 
         Song PinkFluffyMotherfuckingUnicorn;
 
-        public static void ChangeState(State state)
-        {
-            State = state;
-        }
-
         /// <summary>
         ///  The method that starts the program and launches the game loop
         /// </summary>
