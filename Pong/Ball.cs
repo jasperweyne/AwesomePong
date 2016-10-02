@@ -90,21 +90,28 @@ namespace Pong
             foreach (GameElement elem in MainProcess.GState.Elems) {
                 if (this.Bounds.Intersects(elem.GetBounds()) && elem != this) {
                     if (elem is Player) {
-                        Vector2 dLoc = new Vector2(oldLoc.X, oldLoc.Y);
-                        Rectangle dBounds = new Rectangle(dLoc.ToPoint(), this.Bounds.Size);
-                        dLoc.X += this.movement.X;
-                        dBounds.Location = dLoc.ToPoint();
-                        if (dBounds.Intersects(elem.GetBounds())) {
+                        Rectangle dBoundsX = new Rectangle(new Point((int)(oldLoc.X + this.movement.X), (int)oldLoc.Y), this.Bounds.Size);
+                        if (dBoundsX.Intersects(elem.GetBounds())) {
                             this.location.Y = oldLoc.Y;
                             this.movement.X *= -1;
+                            if (elem.GetBounds().Intersects(new Rectangle((this.location + this.movement).ToPoint(), this.Bounds.Size))) {
+                                if (elem.Movement.X > 0)
+                                    this.location.X = elem.GetBounds().Right - this.movement.X;
+                                else
+                                    this.location.X = elem.GetBounds().Left - this.Bounds.Width - this.movement.X;
+                            }
                         }
-                        dLoc.Y += this.movement.Y;
-                        dBounds.Location = dLoc.ToPoint();
-                        if (dBounds.Intersects(elem.GetBounds())) {
+                        Rectangle dBoundsY = new Rectangle(new Point((int)oldLoc.X, (int)(oldLoc.Y + this.movement.Y)), this.Bounds.Size);
+                        if (dBoundsY.Intersects(elem.GetBounds())) {
                             this.location.X = oldLoc.X;
                             this.movement.Y *= -1;
+                            if (elem.GetBounds().Intersects(new Rectangle((this.location + this.movement).ToPoint(), this.Bounds.Size))) {
+                                if (elem.Movement.Y > 0)
+                                    this.location.Y = elem.GetBounds().Bottom - this.movement.Y;
+                                else
+                                    this.location.Y = elem.GetBounds().Top - this.Bounds.Height - this.movement.Y;
+                            }
                         }
-                        //this.location += elem.Movement;
                         UpdateLoc();
                         this.last = (Player)elem;
                     }
