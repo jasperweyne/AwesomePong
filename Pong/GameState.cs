@@ -10,23 +10,29 @@ namespace Pong
         public List<GameElement> Elems = new List<GameElement>();
         private List<GameElement> ElemsClone = new List<GameElement>();
         private bool mode;
+        private Scores scores;
 
         public GameState(bool lives = true)
         {
             this.mode = lives;
+            this.scores = new Scores();
         }
 
         public virtual void Hit(Ball obj, Player player, Player by)
         {
             obj.Reset();
-            if (this.mode)
+            if (this.mode) {
                 --player.Score;
-            else
+                if (player.Score < 0) {
+                    scores.SetScore(player.Color, Elems.Count);
+                    Elems.Remove(player);
+                    if (Elems.OfType<Player>().Count<GameElement>() <= 1) {
+                        scores.SetScore(Elems.OfType<Player>().Single<Player>().Color, Elems.Count);
+                        MainProcess.State = scores;
+                    }
+                }
+            } else {
                 ++by.Score;
-            if (player.Score < 0) {
-                Elems.Remove(player);
-                if (Elems.OfType<Player>().Count<GameElement>() <= 1)
-                    MainProcess.State = new MainMenu();
             }
         }
 
