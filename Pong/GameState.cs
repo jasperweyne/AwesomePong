@@ -38,7 +38,7 @@ namespace Pong
                     scores.SetScore(player.Color, Elems.OfType<Player>().Count());
                     Elems.Remove(player);
                     if (Elems.OfType<Player>().Count<GameElement>() <= 1) {
-                        scores.SetScore(Elems.OfType<Player>().Single<Player>().Color, Elems.Count);
+                        scores.SetScore(Elems.OfType<Player>().Single<Player>().Color, 1);
                         MainProcess.State = scores;
                     }
                 }
