@@ -9,19 +9,13 @@ namespace Pong
 {
     class StateOfflineMulti: GameState
     {
-        Player left;
-        Player right;
 
         public StateOfflineMulti()
         {
             this.Field = new Rectangle(0, 50, MainProcess.graphics.GraphicsDevice.Viewport.Width, MainProcess.graphics.GraphicsDevice.Viewport.Height - 50);
-            left = new PlayablePlayer(this, MainProcess.PlayerTex, Keys.S, Keys.W, Player.ScreenLocation.Left);
-            right = new PlayablePlayer(this, MainProcess.PlayerTex, Keys.Down, Keys.Up, Player.ScreenLocation.Right);
-            //right = new AIPlayer(this, MainProcess.PlayerTex, Player.ScreenLocation.Right);
-            GameElement ball = new Ball(this, MainProcess.BallTex);
-            this.Elems.Add(left);
-            this.Elems.Add(right);
-            this.Elems.Add(ball);
+            this.Elems.Add(new PlayablePlayer(this, MainProcess.PlayerTex, Keys.S, Keys.W, Player.ScreenLocation.Left));
+            this.Elems.Add(new PlayablePlayer(this, MainProcess.PlayerTex, Keys.Down, Keys.Up, Player.ScreenLocation.Right));
+            this.Elems.Add(new Ball(this, MainProcess.BallTex));
         }
 
         public override void Draw()
