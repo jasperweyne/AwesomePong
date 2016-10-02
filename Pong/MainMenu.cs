@@ -8,10 +8,10 @@ namespace Pong
     class MainMenu: State
     {
         List<PlayerDef> players = new List<PlayerDef>() {
-            new PlayerDef(PlayerType.Playable, Color.Yellow, Player.ScreenLocation.Left, KeySet.set1),
-            new PlayerDef(PlayerType.AI, Color.Blue, Player.ScreenLocation.Right, KeySet.set2),
-            new PlayerDef(PlayerType.None, Color.White, Player.ScreenLocation.Top, KeySet.set3),
-            new PlayerDef(PlayerType.None, Color.Green, Player.ScreenLocation.Bottom, KeySet.set4),
+            new PlayerDef(PlayerType.Playable, 0, Player.ScreenLocation.Left, KeySet.set1),
+            new PlayerDef(PlayerType.AI, 1, Player.ScreenLocation.Right, KeySet.set2),
+            new PlayerDef(PlayerType.None, 2, Player.ScreenLocation.Top, KeySet.set3),
+            new PlayerDef(PlayerType.None, 3, Player.ScreenLocation.Bottom, KeySet.set4),
         };
 
         struct KeySet
@@ -36,15 +36,25 @@ namespace Pong
 
         struct PlayerDef
         {
+            public static Color[] colors = new Color[] {
+                Color.Yellow,
+                Color.Blue,
+                Color.White,
+                Color.Green,
+                Color.Orange,
+                Color.Black,
+                Color.Cyan,
+                Color.Purple
+            };
             public PlayerType type;
-            public Color color;
+            public int color;
             public Player.ScreenLocation loc;
             public KeySet keys;
 
-            public PlayerDef(PlayerType type, Color col, Player.ScreenLocation loc, KeySet keys)
+            public PlayerDef(PlayerType type, int colId, Player.ScreenLocation loc, KeySet keys)
             {
                 this.type = type;
-                this.color = col;
+                this.color = colId % colors.Count();
                 this.loc = loc;
                 this.keys = keys;
             } 
@@ -56,6 +66,16 @@ namespace Pong
             AI
         }
 
+        private void nextColor(PlayerDef p)
+        {
+            while (players.Any(player => player.color == ++p.color));
+        }
+
+        private void prevColor(PlayerDef p)
+        {
+            while (players.Any(player => player.color == --p.color));
+        }
+
         public override void Update()
         {
 
@@ -64,11 +84,11 @@ namespace Pong
                 foreach (PlayerDef def in players.Where(player => player.type != PlayerType.None)) {
                     if (def.type == PlayerType.Playable)
                         if (def.loc == Player.ScreenLocation.Left || def.loc == Player.ScreenLocation.Right)
-                            MainProcess.GState.Elems.Add(new PlayablePlayer(MainProcess.PlayerTex, def.keys.down, def.keys.up, def.loc, def.color));
+                            MainProcess.GState.Elems.Add(new PlayablePlayer(MainProcess.PlayerTex, def.keys.down, def.keys.up, def.loc, PlayerDef.colors[def.color]));
                         else
-                            MainProcess.GState.Elems.Add(new PlayablePlayer(MainProcess.PlayerTex, def.keys.right, def.keys.left, def.loc, def.color));
+                            MainProcess.GState.Elems.Add(new PlayablePlayer(MainProcess.PlayerTex, def.keys.right, def.keys.left, def.loc, PlayerDef.colors[def.color]));
                     else
-                        MainProcess.GState.Elems.Add(new AIPlayer(MainProcess.PlayerTex, def.loc, def.color));
+                        MainProcess.GState.Elems.Add(new AIPlayer(MainProcess.PlayerTex, def.loc, PlayerDef.colors[def.color]));
                 }
                 MainProcess.GState.Elems.Add(new Ball(MainProcess.BallTex));
                 MainProcess.GState.Load();
