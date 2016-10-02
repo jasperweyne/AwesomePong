@@ -59,8 +59,9 @@ namespace Pong
             TitleTex = Content.Load<Texture2D>("title");
             GameBarTex = Content.Load<Texture2D>("topbar");
             ClassyAsFuckFont = Content.Load<SpriteFont>("Parisienne");
+            FuckingPrettyFont = Content.Load<SpriteFont>("ComicSans");
             //PinkFluffyMotherfuckingUnicorn = Content.Load<Song>("pinkfluffyunicorn");
-            State = new StateOfflineMulti(GraphicsDevice);
+            State = new MainMenu();
 
             // TODO: use this.Content to load your game content here
         }
