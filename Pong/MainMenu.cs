@@ -71,6 +71,7 @@ namespace Pong
                         MainProcess.GState.Elems.Add(new AIPlayer(MainProcess.PlayerTex, def.loc, def.color));
                 }
                 MainProcess.GState.Elems.Add(new Ball(MainProcess.BallTex));
+                MainProcess.GState.Load();
             }
         }
         public override void Draw()

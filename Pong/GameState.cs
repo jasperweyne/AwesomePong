@@ -15,13 +15,18 @@ namespace Pong
         public GameState(bool lives = true)
         {
             this.mode = lives;
+            this.scores = new Scores();
+        }
+
+        public GameState Load()
+        {
             foreach (Player player in Elems.OfType<Player>()) {
-                if (lives)
+                if (this.mode)
                     player.Score = 3;
                 else
                     player.Score = 0;
             }
-            this.scores = new Scores();
+            return this;
         }
 
         public virtual void Hit(Ball obj, Player player, Player by)
@@ -30,7 +35,7 @@ namespace Pong
             if (this.mode) {
                 --player.Score;
                 if (player.Score < 0) {
-                    scores.SetScore(player.Color, Elems.Count);
+                    scores.SetScore(player.Color, Elems.OfType<Player>().Count());
                     Elems.Remove(player);
                     if (Elems.OfType<Player>().Count<GameElement>() <= 1) {
                         scores.SetScore(Elems.OfType<Player>().Single<Player>().Color, Elems.Count);
