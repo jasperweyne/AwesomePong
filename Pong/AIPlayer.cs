@@ -6,7 +6,7 @@ namespace Pong
 {
     class AIPlayer : Player
     {
-        public AIPlayer(GameState state, Texture2D tex, ScreenLocation scrLoc, Color color) : base(state, tex, scrLoc, color)
+        public AIPlayer(Texture2D tex, ScreenLocation scrLoc, Color color) : base(tex, scrLoc, color)
         {
         }
 

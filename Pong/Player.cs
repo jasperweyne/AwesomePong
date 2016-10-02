@@ -18,7 +18,7 @@ namespace Pong
             Bottom,
             Left
         }
-        public Player(GameState state, Texture2D tex, ScreenLocation scrLoc, Color color): base(tex)
+        public Player(Texture2D tex, ScreenLocation scrLoc, Color color): base(tex)
         {
             this.ScreenSide = scrLoc;
             this.Color = color;
@@ -26,23 +26,23 @@ namespace Pong
                 case ScreenLocation.Top:
                 case ScreenLocation.Bottom:
                     if (scrLoc == ScreenLocation.Top)
-                        this.location = new Vector2(state.Field.Center.X - 56, state.Field.Top + 50 - 8);
+                        this.location = new Vector2(MainProcess.GState.Field.Center.X - 56, MainProcess.GState.Field.Top + 50 - 8);
                     else
-                        this.location = new Vector2(state.Field.Center.X - 56, state.Field.Bottom - 50 - 8);
+                        this.location = new Vector2(MainProcess.GState.Field.Center.X - 56, MainProcess.GState.Field.Bottom - 50 - 8);
                     this.locModif = new Vector2(-120, 9);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(112, 16));
                     this.rotation = (float)Math.PI / 2;
-                    this.speed = state.Field.Width / 200;
+                    this.speed = MainProcess.GState.Field.Width / 200;
                     break;
                 case ScreenLocation.Left:
                 case ScreenLocation.Right:
                     if (scrLoc == ScreenLocation.Left)
-                        this.location = new Vector2(state.Field.Left + 50 - 8, state.Field.Center.Y - 56);
+                        this.location = new Vector2(MainProcess.GState.Field.Left + 50 - 8, MainProcess.GState.Field.Center.Y - 56);
                     else
-                        this.location = new Vector2(state.Field.Right - 50 - 8, state.Field.Center.Y - 56);
+                        this.location = new Vector2(MainProcess.GState.Field.Right - 50 - 8, MainProcess.GState.Field.Center.Y - 56);
                     this.locModif = new Vector2(9, 8);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(16, 112));
-                    this.speed = state.Field.Height / 200;
+                    this.speed = MainProcess.GState.Field.Height / 200;
                     break;
             }
         }

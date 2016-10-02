@@ -10,7 +10,7 @@ namespace Pong
         private static Random r = new Random();
         private Player last;
 
-        public Ball(GameState state, Texture2D tex): base(tex)
+        public Ball(Texture2D tex): base(tex)
         {
             double dir = r.NextDouble() * Math.PI;
             if (dir >= Math.PI / 2) {
@@ -20,7 +20,7 @@ namespace Pong
             dir -= Math.PI / 4;
             const double speed = 4;
             this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
-            this.location = state.Field.Center.ToVector2();
+            this.location = MainProcess.GState.Field.Center.ToVector2();
             this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64));
         }
 

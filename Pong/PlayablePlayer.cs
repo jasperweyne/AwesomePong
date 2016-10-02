@@ -9,7 +9,7 @@ namespace Pong
         private Keys down;
         private Keys up;
 
-        public PlayablePlayer(GameState state, Texture2D tex, Keys down, Keys up, ScreenLocation scrLoc, Color color) : base(state, tex, scrLoc, color)
+        public PlayablePlayer(Texture2D tex, Keys down, Keys up, ScreenLocation scrLoc, Color color) : base(tex, scrLoc, color)
         {
             this.down = down;
             this.up = up;

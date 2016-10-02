@@ -7,8 +7,12 @@ namespace Pong
     {
         public override void Update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                MainProcess.State = new StateOfflineMulti();
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter)) {
+                MainProcess.State = new GameState();
+                MainProcess.GState.Elems.Add(new PlayablePlayer(MainProcess.PlayerTex, Keys.S, Keys.W, Player.ScreenLocation.Left, Color.Yellow));
+                MainProcess.GState.Elems.Add(new PlayablePlayer(MainProcess.PlayerTex, Keys.Down, Keys.Up, Player.ScreenLocation.Right, Color.Blue));
+                MainProcess.GState.Elems.Add(new Ball(MainProcess.BallTex));
+            }
         }
         public override void Draw()
         {
