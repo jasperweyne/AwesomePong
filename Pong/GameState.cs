@@ -9,11 +9,20 @@ namespace Pong
         public Rectangle Field = new Rectangle(0, 50, MainProcess.graphics.GraphicsDevice.Viewport.Width, MainProcess.graphics.GraphicsDevice.Viewport.Height - 50);
         public List<GameElement> Elems = new List<GameElement>();
         private List<GameElement> ElemsClone = new List<GameElement>();
+        private bool mode;
+
+        public GameState(bool lives = true)
+        {
+            this.mode = lives;
+        }
 
         public virtual void Hit(Ball obj, Player player, Player by)
         {
             obj.Reset();
-            --player.Score;
+            if (this.mode)
+                --player.Score;
+            else
+                ++by.Score;
             if (player.Score < 0) {
                 Elems.Remove(player);
                 if (Elems.OfType<Player>().Count<GameElement>() <= 1)
