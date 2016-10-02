@@ -32,7 +32,7 @@ namespace Pong
                     this.locModif = new Vector2(-120, 9);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(112, 16));
                     this.rotation = (float)Math.PI / 2;
-                    this.speed = MainProcess.GState.Field.Width / 200;
+                    this.speed = MainProcess.GState.Field.Width / 300;
                     break;
                 case ScreenLocation.Left:
                 case ScreenLocation.Right:
@@ -42,7 +42,7 @@ namespace Pong
                         this.location = new Vector2(MainProcess.GState.Field.Right - 50 - 8, MainProcess.GState.Field.Center.Y - 56);
                     this.locModif = new Vector2(9, 8);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(16, 112));
-                    this.speed = MainProcess.GState.Field.Height / 200;
+                    this.speed = MainProcess.GState.Field.Height / 300;
                     break;
             }
         }
