@@ -10,7 +10,6 @@ namespace Pong
 {
     public class Ball : GameElement
     {
-        private Vector2 movement;
         private static Random r = new Random();
         private Player last;
 
@@ -87,11 +86,11 @@ namespace Pong
                     MainProcess.GState.Hit(this, hit, last);
             }
             UpdateLoc();
-
+            
             foreach (GameElement elem in MainProcess.GState.Elems) {
                 if (this.Bounds.Intersects(elem.GetBounds()) && elem != this) {
                     if (elem is Player) {
-                        Vector2 minkowski = (this.Bounds.Center - elem.GetBounds().Center).ToVector2() * (this.Bounds.Size + elem.GetBounds().Size).ToVector2() / 2;
+                        Vector2 minkowski = (this.Bounds.Center - elem.GetBounds().Center).ToVector2() * ((this.Bounds.Size + elem.GetBounds().Size).ToVector2() / 2);
                         if (minkowski.Y > minkowski.X) {
                             if (minkowski.Y > -minkowski.X) {
                                 // top
@@ -109,8 +108,8 @@ namespace Pong
                                 this.movement.X = -this.movement.X;
                             } else {
                                 // bottom
-                                this.location.Y = oldLoc.Y;
-                                this.movement.X = -this.movement.X;
+                                this.location.X = oldLoc.X;
+                                this.movement.Y = -this.movement.Y;
                             }
                         }
                         this.location += elem.Movement;
