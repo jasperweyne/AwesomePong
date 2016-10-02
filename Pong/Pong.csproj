@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AIPlayer.cs" />
     <Compile Include="Ball.cs" />
     <Compile Include="BaseObject.cs" />
     <Compile Include="GameElement.cs" />
