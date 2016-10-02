@@ -6,7 +6,7 @@ namespace Pong
 {
     public class GameState: State
     {
-        public Rectangle Field;
+        public Rectangle Field = new Rectangle(0, 50, MainProcess.graphics.GraphicsDevice.Viewport.Width, MainProcess.graphics.GraphicsDevice.Viewport.Height - 50);
         public List<GameElement> Elems = new List<GameElement>();
         public virtual void Hit(Ball obj, Player player, Player by)
         {
