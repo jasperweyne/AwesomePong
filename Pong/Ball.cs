@@ -90,10 +90,29 @@ namespace Pong
 
             foreach (GameElement elem in MainProcess.GState.Elems) {
                 if (this.Bounds.Intersects(elem.GetBounds()) && elem != this) {
-                    // TODO: make it special and universal
                     if (elem is Player) {
-                        this.location.Y = oldLoc.Y;
-                        this.movement.X = -this.movement.X;
+                        Vector2 minkowski = (this.Bounds.Center - elem.GetBounds().Center).ToVector2() * (this.Bounds.Size + elem.GetBounds().Size).ToVector2() / 2;
+                        if (minkowski.Y > minkowski.X) {
+                            if (minkowski.Y > -minkowski.X) {
+                                // top
+                                this.location.X = oldLoc.X;
+                                this.movement.Y = -this.movement.Y;
+                            } else {
+                                // left
+                                this.location.Y = oldLoc.Y;
+                                this.movement.X = -this.movement.X;
+                            }
+                        } else {
+                            if (minkowski.Y > -minkowski.X) {
+                                // right
+                                this.location.Y = oldLoc.Y;
+                                this.movement.X = -this.movement.X;
+                            } else {
+                                // bottom
+                                this.location.Y = oldLoc.Y;
+                                this.movement.X = -this.movement.X;
+                            }
+                        }
                         UpdateLoc();
                         this.last = (Player)elem;
                     }

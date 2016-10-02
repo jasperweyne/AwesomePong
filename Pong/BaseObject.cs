@@ -17,6 +17,14 @@ namespace Pong
         protected Texture2D view;
         protected float rotation = 0.0f;
         protected SpriteEffects effect = SpriteEffects.None;
+        protected Vector2 movement = Vector2.Zero;
+
+        public Vector2 Movement
+        {
+            get {
+                return this.movement;
+            }
+        }
 
         public BaseObject(Texture2D tex)
         {

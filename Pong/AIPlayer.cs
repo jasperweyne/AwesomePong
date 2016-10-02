@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong
@@ -15,6 +16,7 @@ namespace Pong
 
         public override void Update()
         {
+            this.movement = Vector2.Zero;
             switch (this.ScreenSide) {
                 case ScreenLocation.Top:
                 case ScreenLocation.Bottom:
@@ -31,6 +33,7 @@ namespace Pong
                         this.MoveUp();
                     break;
             }
+            this.location += this.movement;
             UpdateBounds();
         }
     }

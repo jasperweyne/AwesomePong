@@ -17,6 +17,7 @@ namespace Pong
 
         public override void Update()
         {
+            this.movement = Vector2.Zero;
             KeyboardState state = Keyboard.GetState();
             if (state.IsKeyDown(this.down))
             {
@@ -26,6 +27,7 @@ namespace Pong
             {
                 this.MoveUp();
             }
+            this.location += this.movement;
             UpdateBounds();
         }
     }

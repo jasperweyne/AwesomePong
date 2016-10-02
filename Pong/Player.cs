@@ -51,9 +51,9 @@ namespace Pong
             // Als onderkant (vandaar +96) van het plaatje hoger is
             // dan onderkant van het scherm, verplaats naar onder
             if (this.location.Y + this.Bounds.Height + 5 < MainProcess.GState.Field.Bottom) {
-                this.location.Y += 5;
+                this.movement.Y = 5;
             } else {
-                this.location.Y = MainProcess.GState.Field.Bottom - this.Bounds.Height;
+                this.movement.Y = MainProcess.GState.Field.Bottom - this.Bounds.Height - this.location.Y;
             }
         }
 
@@ -63,9 +63,9 @@ namespace Pong
             // de bovenkant van het scherm, verplaats naar boven
             if (this.location.Y - 5 > MainProcess.GState.Field.Top)
             {
-                this.location.Y -= 5;
+                this.movement.Y = -5;
             } else {
-                this.location.Y = MainProcess.GState.Field.Top;
+                this.movement.Y = MainProcess.GState.Field.Top - this.location.Y;
             }
         }
 
