@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Pong
 {
-    public abstract class GameState: State
+    public class GameState: State
     {
         public Rectangle Field;
         public List<GameElement> Elems = new List<GameElement>();
@@ -31,6 +31,17 @@ namespace Pong
         {
             foreach (GameElement elem in this.Elems)
                 elem.Draw();
+            int cx = MainProcess.graphics.GraphicsDevice.Viewport.Width / 2;
+            int tw = MainProcess.TitleTex.Width / 2;
+            MainProcess.spriteBatch.Draw(MainProcess.GameBarTex, Vector2.Zero, Color.White);
+            MainProcess.spriteBatch.Draw(MainProcess.TitleTex, new Vector2(cx - tw, 25 - MainProcess.TitleTex.Height / 2), Color.White);
+            List<Player> PlayerList = MainProcess.GState.Elems.OfType<Player>().ToList<Player>();
+            for (int i = 0; i < PlayerList.Count; ++i) {
+                int posX = (cx - tw) / (PlayerList.Count + 1);
+                Vector2 size = MainProcess.ClassyAsFuckFont.MeasureString(PlayerList[i].Score.ToString());
+                Vector2 pos = new Vector2(posX * (i + 1) - size.X / 2, 25 - size.Y / 2);
+                MainProcess.spriteBatch.DrawString(MainProcess.ClassyAsFuckFont, PlayerList[i].Score.ToString(), pos, Color.White);
+            }
         }
     }
 }
