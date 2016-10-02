@@ -13,12 +13,11 @@ namespace Pong
 
         public Ball(Texture2D tex): base(tex)
         {
-            double dir = r.NextDouble() * Math.PI;
-            if (dir >= Math.PI / 2) {
-                dir += Math.PI / 2;
+            double dir = r.Next(4);
+            if (dir <= 1) {
                 effect = SpriteEffects.FlipHorizontally;
             }
-            dir -= Math.PI / 4;
+            dir = dir / 2 * Math.PI + Math.PI / 4;
             this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
             this.location = MainProcess.GState.Field.Center.ToVector2();
             this.Bounds = new Rectangle(location.ToPoint(), new Point(84, 64));
@@ -26,12 +25,11 @@ namespace Pong
 
         public void Reset()
         {
-            double dir = r.NextDouble() * Math.PI;
-            if (dir >= Math.PI / 2) {
-                dir += Math.PI / 2;
+            double dir = r.Next(4);
+            if (dir <= 1) {
                 effect = SpriteEffects.FlipHorizontally;
             }
-            dir -= Math.PI / 4;
+            dir = dir / 2 * Math.PI + Math.PI / 4;
             this.movement = new Vector2((float)(speed * Math.Cos(dir)), (float)(speed * Math.Sin(dir)));
             this.location = MainProcess.GState.Field.Center.ToVector2();
         }
