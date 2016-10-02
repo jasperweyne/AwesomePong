@@ -15,6 +15,12 @@ namespace Pong
         public GameState(bool lives = true)
         {
             this.mode = lives;
+            foreach (Player player in Elems.OfType<Player>()) {
+                if (lives)
+                    player.Score = 3;
+                else
+                    player.Score = 0;
+            }
             this.scores = new Scores();
         }
 

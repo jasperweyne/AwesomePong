@@ -8,7 +8,7 @@ namespace Pong
     {
         public ScreenLocation ScreenSide { get; }
         public Color Color { get; }
-        public int Score = 3;
+        public int Score;
         private float speed;
         private Vector2 locModif;
 
