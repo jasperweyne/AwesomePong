@@ -10,6 +10,8 @@ namespace Pong
         List<PlayerDef> players = new List<PlayerDef>() {
             new PlayerDef(PlayerType.Playable, Color.Yellow, Player.ScreenLocation.Left, KeySet.set1),
             new PlayerDef(PlayerType.AI, Color.Blue, Player.ScreenLocation.Right, KeySet.set2),
+            new PlayerDef(PlayerType.None, Color.White, Player.ScreenLocation.Top, KeySet.set3),
+            new PlayerDef(PlayerType.None, Color.Green, Player.ScreenLocation.Bottom, KeySet.set4),
         };
 
         struct KeySet
@@ -38,7 +40,6 @@ namespace Pong
             public Color color;
             public Player.ScreenLocation loc;
             public KeySet keys;
-
 
             public PlayerDef(PlayerType type, Color col, Player.ScreenLocation loc, KeySet keys)
             {
