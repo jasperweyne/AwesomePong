@@ -15,8 +15,8 @@ namespace Pong
         public virtual void Hit(Ball obj, Player player, Player by)
         {
             obj.Reset();
-            --player.Lives;
-            if (player.Lives < 0) {
+            --player.Score;
+            if (player.Score < 0) {
                 Elems.Remove(player);
                 if (Elems.OfType<Player>().Count<GameElement>() <= 1)
                     MainProcess.State = new StateOfflineMulti();
