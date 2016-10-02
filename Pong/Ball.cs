@@ -113,6 +113,7 @@ namespace Pong
                                 this.movement.X = -this.movement.X;
                             }
                         }
+                        this.location += elem.Movement;
                         UpdateLoc();
                         this.last = (Player)elem;
                     }
