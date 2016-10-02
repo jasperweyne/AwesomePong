@@ -16,7 +16,8 @@ namespace Pong
         }
         public override void Draw()
         {
-            MainProcess.spriteBatch.Draw(MainProcess.TitleTex, new Vector2(300, MainProcess.graphics.GraphicsDevice.Viewport.Height / 2), Color.White);
+            Vector2 pos = new Vector2(MainProcess.graphics.GraphicsDevice.Viewport.Width / 2 - MainProcess.TitleTex.Width / 2, 25 - MainProcess.TitleTex.Height / 2);
+            MainProcess.spriteBatch.Draw(MainProcess.TitleTex, pos, Color.White);
             MainProcess.spriteBatch.DrawString(MainProcess.FuckingPrettyFont, "Press enter to start", new Vector2(260, MainProcess.graphics.GraphicsDevice.Viewport.Height / 2 + 30), Color.White);
         }
     }

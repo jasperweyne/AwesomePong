@@ -8,6 +8,7 @@ namespace Pong
     {
         public Rectangle Field = new Rectangle(0, 50, MainProcess.graphics.GraphicsDevice.Viewport.Width, MainProcess.graphics.GraphicsDevice.Viewport.Height - 50);
         public List<GameElement> Elems = new List<GameElement>();
+        private List<GameElement> ElemsClone = new List<GameElement>();
 
         public virtual void Hit(Ball obj, Player player, Player by)
         {
@@ -22,15 +23,15 @@ namespace Pong
 
         public override void Update()
         {
-            List<GameElement> clone = new List<GameElement>(this.Elems.Count);
-            clone.AddRange(this.Elems);
-            foreach (GameElement elem in clone)
+            ElemsClone.Clear();
+            ElemsClone.AddRange(this.Elems);
+            foreach (GameElement elem in ElemsClone)
                 elem.Update();
         }
 
         public override void Draw()
         {
-            foreach (GameElement elem in this.Elems)
+            foreach (GameElement elem in this.ElemsClone)
                 elem.Draw();
             int cx = MainProcess.graphics.GraphicsDevice.Viewport.Width / 2;
             int tw = MainProcess.TitleTex.Width / 2;
