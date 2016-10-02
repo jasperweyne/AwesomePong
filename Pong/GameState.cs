@@ -19,7 +19,7 @@ namespace Pong
             if (player.Lives < 0) {
                 Elems.Remove(player);
                 if (Elems.OfType<Player>().Count<GameElement>() <= 1)
-                    MainProcess.State = new StateOfflineMulti(MainProcess.graphics.GraphicsDevice);
+                    MainProcess.State = new StateOfflineMulti();
             }
         }
 

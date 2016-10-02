@@ -8,7 +8,7 @@ namespace Pong
         public override void Update()
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                MainProcess.State = new StateOfflineMulti(MainProcess.graphics.GraphicsDevice);
+                MainProcess.State = new StateOfflineMulti();
         }
         public override void Draw()
         {
