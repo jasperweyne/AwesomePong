@@ -31,9 +31,9 @@ namespace Pong
                         this.location = new Vector2(345, 100);
                     else
                         this.location = new Vector2(345, 430);
-                    this.locModif = new Vector2(8, 9);
+                    this.locModif = new Vector2(-120, 9);
                     this.Bounds = new Rectangle(this.location.ToPoint(), new Point(112, 16));
-                    this.rotation = -(float)Math.PI / 2;
+                    this.rotation = (float)Math.PI / 2;
                     break;
                 case ScreenLocation.Left:
                 case ScreenLocation.Right:
@@ -50,10 +50,18 @@ namespace Pong
         {
             // Als onderkant (vandaar +96) van het plaatje hoger is
             // dan onderkant van het scherm, verplaats naar onder
-            if (this.location.Y + this.Bounds.Height + 5 < MainProcess.GState.Field.Bottom) {
-                this.movement.Y = 5;
+            if (this.ScreenSide == ScreenLocation.Left || this.ScreenSide == ScreenLocation.Right) {
+                if (this.location.Y + this.Bounds.Height + 5 < MainProcess.GState.Field.Bottom) {
+                    this.movement.Y = 5;
+                } else {
+                    this.movement.Y = MainProcess.GState.Field.Bottom - this.Bounds.Height - this.location.Y;
+                }
             } else {
-                this.movement.Y = MainProcess.GState.Field.Bottom - this.Bounds.Height - this.location.Y;
+                if (this.location.X + this.Bounds.Width + 5 < MainProcess.GState.Field.Right) {
+                    this.movement.X = 5;
+                } else {
+                    this.movement.X = MainProcess.GState.Field.Right - this.Bounds.Width - this.location.X;
+                }
             }
         }
 
@@ -61,11 +69,18 @@ namespace Pong
         {
             // Als bovenkant van het plaatje lager is dan
             // de bovenkant van het scherm, verplaats naar boven
-            if (this.location.Y - 5 > MainProcess.GState.Field.Top)
-            {
-                this.movement.Y = -5;
+            if (this.ScreenSide == ScreenLocation.Left || this.ScreenSide == ScreenLocation.Right) {
+                if (this.location.Y - 5 > MainProcess.GState.Field.Top) {
+                    this.movement.Y = -5;
+                } else {
+                    this.movement.Y = MainProcess.GState.Field.Top - this.location.Y;
+                }
             } else {
-                this.movement.Y = MainProcess.GState.Field.Top - this.location.Y;
+                if (this.location.X - 5 > MainProcess.GState.Field.Left) {
+                    this.movement.X = -5;
+                } else {
+                    this.movement.X = MainProcess.GState.Field.Left - this.location.X;
+                }
             }
         }
 
