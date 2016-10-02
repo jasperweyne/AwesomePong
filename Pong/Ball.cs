@@ -62,26 +62,26 @@ namespace Pong
             if (this.location.Y <= MainProcess.GState.Field.Top) {
                 Player hit = getPlayer(Player.ScreenLocation.Top);
                 if (hit == null)
-                    this.movement.Y = Math.Abs(this.movement.Y);
+                    this.movement.Y *= -1;
                 else if (this.location.Y + this.Bounds.Height <= MainProcess.GState.Field.Top)
                     MainProcess.GState.Hit(this, hit, last);
             } else if (this.location.Y + this.Bounds.Height >= MainProcess.GState.Field.Bottom) {
                 Player hit = getPlayer(Player.ScreenLocation.Bottom);
                 if (hit == null)
-                    this.movement.Y = -Math.Abs(this.movement.Y);
+                    this.movement.Y *= -1;
                 else if (this.location.Y >= MainProcess.GState.Field.Bottom)
                     MainProcess.GState.Hit(this, hit, last);
             }
             if (this.location.X <= MainProcess.GState.Field.Left) {
                 Player hit = getPlayer(Player.ScreenLocation.Left);
                 if (hit == null)
-                    this.movement.X = Math.Abs(this.movement.X);
+                    this.movement.X *= -1;
                 else if (this.location.X + this.Bounds.Width <= MainProcess.GState.Field.Left)
                     MainProcess.GState.Hit(this, hit, last);
             } else if (this.location.X + this.Bounds.Width >= MainProcess.GState.Field.Right) {
                 Player hit = getPlayer(Player.ScreenLocation.Right);
                 if (hit == null)
-                    this.movement.X = -Math.Abs(this.movement.X);
+                    this.movement.X *= -1;
                 else if (this.location.X >= MainProcess.GState.Field.Right)
                     MainProcess.GState.Hit(this, hit, last);
             }
@@ -95,21 +95,21 @@ namespace Pong
                             if (minkowski.Y > -minkowski.X) {
                                 // top
                                 this.location.X = oldLoc.X;
-                                this.movement.Y = -this.movement.Y;
+                                this.movement.Y *= -1;
                             } else {
                                 // left
                                 this.location.Y = oldLoc.Y;
-                                this.movement.X = -this.movement.X;
+                                this.movement.X *= -1;
                             }
                         } else {
                             if (minkowski.Y > -minkowski.X) {
                                 // right
                                 this.location.Y = oldLoc.Y;
-                                this.movement.X = -this.movement.X;
+                                this.movement.X *= -1;
                             } else {
                                 // bottom
                                 this.location.X = oldLoc.X;
-                                this.movement.Y = -this.movement.Y;
+                                this.movement.Y *= -1;
                             }
                         }
                         this.location += elem.Movement;
