@@ -7,6 +7,7 @@ namespace Pong
     public abstract class Player : GameElement
     {
         public ScreenLocation ScreenSide { get; }
+        public Color Color { get; }
         public int Score = 3;
         private float speed;
         private Vector2 locModif;
@@ -17,9 +18,10 @@ namespace Pong
             Bottom,
             Left
         }
-        public Player(GameState state, Texture2D tex, ScreenLocation scrLoc): base(tex)
+        public Player(GameState state, Texture2D tex, ScreenLocation scrLoc, Color color): base(tex)
         {
             this.ScreenSide = scrLoc;
+            this.Color = color;
             switch (scrLoc) {
                 case ScreenLocation.Top:
                 case ScreenLocation.Bottom:
@@ -84,7 +86,7 @@ namespace Pong
 
         public override void Draw()
         {
-            MainProcess.spriteBatch.Draw(this.view, this.location - this.locModif, null, null, null, this.rotation, null, null, this.effect);
+            MainProcess.spriteBatch.Draw(this.view, this.location - this.locModif, null, null, null, this.rotation, null, this.Color, this.effect);
         }
     }
 }

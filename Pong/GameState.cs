@@ -40,7 +40,7 @@ namespace Pong
                 int posX = (cx - tw) / (PlayerList.Count + 1);
                 Vector2 size = MainProcess.ClassyAsFuckFont.MeasureString(PlayerList[i].Score.ToString());
                 Vector2 pos = new Vector2(posX * (i + 1) - size.X / 2, 25 - size.Y / 2);
-                MainProcess.spriteBatch.DrawString(MainProcess.ClassyAsFuckFont, PlayerList[i].Score.ToString(), pos, Color.White);
+                MainProcess.spriteBatch.DrawString(MainProcess.ClassyAsFuckFont, PlayerList[i].Score.ToString(), pos, PlayerList[i].Color);
             }
         }
     }
