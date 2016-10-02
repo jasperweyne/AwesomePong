@@ -91,11 +91,12 @@ namespace Pong
             foreach (GameElement elem in MainProcess.GState.Elems) {
                 if (this.Bounds.Intersects(elem.GetBounds()) && elem != this) {
                     // TODO: make it special and universal
-                    this.location.Y = oldLoc.Y;
-                    this.movement.X = -this.movement.X;
-                    UpdateLoc();
-                    if (elem is Player)
+                    if (elem is Player) {
+                        this.location.Y = oldLoc.Y;
+                        this.movement.X = -this.movement.X;
+                        UpdateLoc();
                         this.last = (Player)elem;
+                    }
                 }
             }
         }
