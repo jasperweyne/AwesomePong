@@ -62,26 +62,26 @@ namespace Pong
             if (this.location.Y <= MainProcess.GState.Field.Top) {
                 Player hit = getPlayer(Player.ScreenLocation.Top);
                 if (hit == null)
-                    this.movement.Y *= -1;
+                    this.movement.Y = Math.Abs(this.movement.Y);
                 else if (this.location.Y + this.Bounds.Height <= MainProcess.GState.Field.Top)
                     MainProcess.GState.Hit(this, hit, last);
             } else if (this.location.Y + this.Bounds.Height >= MainProcess.GState.Field.Bottom) {
                 Player hit = getPlayer(Player.ScreenLocation.Bottom);
                 if (hit == null)
-                    this.movement.Y *= -1;
+                    this.movement.Y = -Math.Abs(this.movement.Y);
                 else if (this.location.Y >= MainProcess.GState.Field.Bottom)
                     MainProcess.GState.Hit(this, hit, last);
             }
             if (this.location.X <= MainProcess.GState.Field.Left) {
                 Player hit = getPlayer(Player.ScreenLocation.Left);
                 if (hit == null)
-                    this.movement.X *= -1;
+                    this.movement.X = Math.Abs(this.movement.X);
                 else if (this.location.X + this.Bounds.Width <= MainProcess.GState.Field.Left)
                     MainProcess.GState.Hit(this, hit, last);
             } else if (this.location.X + this.Bounds.Width >= MainProcess.GState.Field.Right) {
                 Player hit = getPlayer(Player.ScreenLocation.Right);
                 if (hit == null)
-                    this.movement.X *= -1;
+                    this.movement.X = -Math.Abs(this.movement.X);
                 else if (this.location.X >= MainProcess.GState.Field.Right)
                     MainProcess.GState.Hit(this, hit, last);
             }
@@ -90,29 +90,21 @@ namespace Pong
             foreach (GameElement elem in MainProcess.GState.Elems) {
                 if (this.Bounds.Intersects(elem.GetBounds()) && elem != this) {
                     if (elem is Player) {
-                        Vector2 minkowski = (this.Bounds.Center - elem.GetBounds().Center).ToVector2() * ((this.Bounds.Size + elem.GetBounds().Size).ToVector2() / 2);
-                        if (minkowski.Y > minkowski.X) {
-                            if (minkowski.Y > -minkowski.X) {
-                                // top
-                                this.location.X = oldLoc.X;
-                                this.movement.Y *= -1;
-                            } else {
-                                // left
-                                this.location.Y = oldLoc.Y;
-                                this.movement.X *= -1;
-                            }
-                        } else {
-                            if (minkowski.Y > -minkowski.X) {
-                                // right
-                                this.location.Y = oldLoc.Y;
-                                this.movement.X *= -1;
-                            } else {
-                                // bottom
-                                this.location.X = oldLoc.X;
-                                this.movement.Y *= -1;
-                            }
+                        Vector2 dLoc = new Vector2(oldLoc.X, oldLoc.Y);
+                        Rectangle dBounds = new Rectangle(dLoc.ToPoint(), this.Bounds.Size);
+                        dLoc.X += this.movement.X;
+                        dBounds.Location = dLoc.ToPoint();
+                        if (dBounds.Intersects(elem.GetBounds())) {
+                            this.location.Y = oldLoc.Y;
+                            this.movement.X *= -1;
                         }
-                        this.location += elem.Movement;
+                        dLoc.Y += this.movement.Y;
+                        dBounds.Location = dLoc.ToPoint();
+                        if (dBounds.Intersects(elem.GetBounds())) {
+                            this.location.X = oldLoc.X;
+                            this.movement.Y *= -1;
+                        }
+                        //this.location += elem.Movement;
                         UpdateLoc();
                         this.last = (Player)elem;
                     }
